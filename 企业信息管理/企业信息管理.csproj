@@ -77,8 +77,14 @@
   <ItemGroup>
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="sell.aspx" />
     <Content Include="staffmanage.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="stock.aspx" />
+    <Content Include="suppliers.aspx" />
+    <Content Include="supply.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="index.aspx.cs">
@@ -96,12 +102,40 @@
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sell.aspx.cs">
+      <DependentUpon>sell.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sell.aspx.designer.cs">
+      <DependentUpon>sell.aspx</DependentUpon>
+    </Compile>
     <Compile Include="staffmanage.aspx.cs">
       <DependentUpon>staffmanage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="staffmanage.aspx.designer.cs">
       <DependentUpon>staffmanage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="stock.aspx.cs">
+      <DependentUpon>stock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="stock.aspx.designer.cs">
+      <DependentUpon>stock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="suppliers.aspx.cs">
+      <DependentUpon>suppliers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suppliers.aspx.designer.cs">
+      <DependentUpon>suppliers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="supply.aspx.cs">
+      <DependentUpon>supply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="supply.aspx.designer.cs">
+      <DependentUpon>supply.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

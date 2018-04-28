@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="staffmanage.aspx.cs" Inherits="企业信息管理.staffmanage" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="stock.aspx.cs" Inherits="企业信息管理.stock" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,7 +13,7 @@
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <title>员工信息管理 - 企业信息管理系统</title>
+  <title>库存管理 - 企业信息管理系统</title>
 </head>
 <body class="sidebar-mini fixed">
   <div class="wrapper">
@@ -70,7 +69,7 @@
                                 notifications.</a></li>
               </ul>
             </li>
-            <!-- User Menu-->
+            <!-- 用户菜单-->
             <li class="dropdown"><a class="dropdown-toggle" href="#"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
@@ -114,12 +113,12 @@
             </a>
           </li>
           <li>
-            <a href="suppliers.aspx">
+            <a href="supply.aspx">
               <i class="fa fa-file-text"></i>
               <span>商品进货及查询</span>
             </a>
           </li>
-          <li>
+          <li class="active">
             <a href="stock.aspx">
               <i class="fa fa-bullhorn"></i>
               <span>库存管理</span>
@@ -131,7 +130,7 @@
               <span>供应商管理</span>
             </a>
           </li>
-          <li class="active">
+          <li>
             <a href="staffmanage.aspx">
               <i class="fa fa-bullhorn"></i>
               <span>员工信息管理</span>
@@ -143,7 +142,7 @@
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>员工信息管理</h1>
+          <h1><i class="fa fa-dashboard"></i>库存管理</h1>
         </div>
         <div>
           <ul class="breadcrumb">

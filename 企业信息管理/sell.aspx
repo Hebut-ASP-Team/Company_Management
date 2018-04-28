@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="staffmanage.aspx.cs" Inherits="企业信息管理.staffmanage" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sell.aspx.cs" Inherits="企业信息管理.sell" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,7 +13,7 @@
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <title>员工信息管理 - 企业信息管理系统</title>
+  <title>商品销售 - 企业信息管理系统</title>
 </head>
 <body class="sidebar-mini fixed">
   <div class="wrapper">
@@ -34,7 +33,7 @@
               data-toggle="dropdown" aria-expanded="false"><i
                 class="fa fa-bell-o fa-lg"></i></a>
               <ul class="dropdown-menu">
-                <li class="not-head">You have 4 new notifications.
+                <li class="not-head">您有4条新通知
                 </li>
                 <li><a class="media" href="javascript:"><span
                   class="media-left media-icon"><span
@@ -66,11 +65,10 @@
                       class="text-muted block">2min ago</span>
                   </div>
                 </a></li>
-                <li class="not-footer"><a href="#">See all
-                                notifications.</a></li>
+                <li class="not-footer"><a href="#">查看所有通知</a></li>
               </ul>
             </li>
-            <!-- User Menu-->
+            <!-- 用户菜单-->
             <li class="dropdown"><a class="dropdown-toggle" href="#"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
@@ -101,20 +99,20 @@
               alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>用户名</p>
-            <p class="designation">属性</p>
+            <p><asp:Label runat="server" ID="username" Text="用户名"/></p>
+            <p class="designation"><asp:Label runat="server" ID="comment"/></p>
           </div>
         </div>
         <!-- 侧边菜单-->
         <ul class="sidebar-menu">
-          <li>
+          <li class="active">
             <a href="sell.aspx">
               <i class="fa fa-dashboard"></i>
               <span>商品销售</span>
             </a>
           </li>
           <li>
-            <a href="suppliers.aspx">
+            <a href="supply.aspx">
               <i class="fa fa-file-text"></i>
               <span>商品进货及查询</span>
             </a>
@@ -131,7 +129,7 @@
               <span>供应商管理</span>
             </a>
           </li>
-          <li class="active">
+          <li>
             <a href="staffmanage.aspx">
               <i class="fa fa-bullhorn"></i>
               <span>员工信息管理</span>
@@ -143,7 +141,7 @@
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>员工信息管理</h1>
+          <h1><i class="fa fa-dashboard"></i>商品销售</h1>
         </div>
         <div>
           <ul class="breadcrumb">

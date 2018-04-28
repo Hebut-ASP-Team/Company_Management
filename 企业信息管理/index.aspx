@@ -69,7 +69,7 @@
                                 notifications.</a></li>
               </ul>
             </li>
-            <!-- User Menu-->
+            <!-- 用户菜单-->
             <li class="dropdown"><a class="dropdown-toggle" href="#"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
@@ -77,13 +77,13 @@
                 class="fa fa-user fa-lg"></i></a>
               <ul class="dropdown-menu settings-menu">
                 <li><a href="page-user.html"><i
-                  class="fa fa-cog fa-lg"></i>Settings</a>
+                  class="fa fa-cog fa-lg"></i>设置</a>
                 </li>
                 <li><a href="page-user.html"><i
-                  class="fa fa-user fa-lg"></i>Profile</a>
+                  class="fa fa-user fa-lg"></i>个人资料</a>
                 </li>
                 <li><a href="page-login.html"><i
-                  class="fa fa-sign-out fa-lg"></i>Logout</a>
+                  class="fa fa-sign-out fa-lg"></i>注销</a>
                 </li>
               </ul>
             </li>
@@ -107,31 +107,31 @@
         <!-- 侧边菜单-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a href="index.html">
+            <a href="sell.aspx">
               <i class="fa fa-dashboard"></i>
               <span>商品销售</span>
             </a>
           </li>
           <li>
-            <a href="homework.html">
+            <a href="supply.aspx">
               <i class="fa fa-file-text"></i>
               <span>商品进货及查询</span>
             </a>
           </li>
           <li>
-            <a href="notice.html">
+            <a href="stock.aspx">
               <i class="fa fa-bullhorn"></i>
               <span>库存管理</span>
             </a>
           </li>
           <li>
-            <a href="notice.html">
+            <a href="suppliers.aspx">
               <i class="fa fa-bullhorn"></i>
               <span>供应商管理</span>
             </a>
           </li>
           <li>
-            <a href="notice.html">
+            <a href="staffmanage.aspx">
               <i class="fa fa-bullhorn"></i>
               <span>员工信息管理</span>
             </a>
