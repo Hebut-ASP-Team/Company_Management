@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="企业信息管理.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="staffmanage.aspx.cs" Inherits="企业信息管理.staffmanage" %>
+
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,7 +14,7 @@
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <title>软件工程课程教学网站</title>
+  <title>员工信息管理 - 企业信息管理系统</title>
 </head>
 <body class="sidebar-mini fixed">
   <div class="wrapper">
@@ -21,13 +22,13 @@
     <header class="main-header hidden-print">
       <a class="logo" href="index.html">Vali</a>
       <nav class="navbar navbar-static-top">
-        <!-- 开启/关闭侧边栏-->
+        <!-- Sidebar toggle button-->
         <a class="sidebar-toggle" href="#"
           data-toggle="offcanvas"></a>
-        <!-- 导航栏右侧菜单-->
+        <!-- Navbar Right Menu-->
         <div class="navbar-custom-menu">
           <ul class="top-nav">
-            <!--通知菜单-->
+            <!--Notification Menu-->
             <li class="dropdown notification-menu"><a
               class="dropdown-toggle" href="#"
               data-toggle="dropdown" aria-expanded="false"><i
@@ -91,7 +92,7 @@
         </div>
       </nav>
     </header>
-    <!-- 侧边栏-->
+    <!-- Side-Nav-->
     <aside class="main-sidebar hidden-print">
       <section class="sidebar">
         <div class="user-panel">
@@ -100,40 +101,28 @@
               alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>用户名</p>
-            <p class="designation">属性</p>
+            <p>杨凯红</p>
+            <p class="designation">软件152班</p>
           </div>
         </div>
-        <!-- 侧边菜单-->
+        <!-- 侧边栏-->
         <ul class="sidebar-menu">
           <li class="active">
             <a href="index.html">
               <i class="fa fa-dashboard"></i>
-              <span>商品销售</span>
+              <span>主页</span>
             </a>
           </li>
           <li>
             <a href="homework.html">
               <i class="fa fa-file-text"></i>
-              <span>商品进货及查询</span>
+              <span>作业</span>
             </a>
           </li>
           <li>
             <a href="notice.html">
               <i class="fa fa-bullhorn"></i>
-              <span>库存管理</span>
-            </a>
-          </li>
-          <li>
-            <a href="notice.html">
-              <i class="fa fa-bullhorn"></i>
-              <span>供应商管理</span>
-            </a>
-          </li>
-          <li>
-            <a href="notice.html">
-              <i class="fa fa-bullhorn"></i>
-              <span>员工信息管理</span>
+              <span>公告</span>
             </a>
           </li>
         </ul>
@@ -210,3 +199,4 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
