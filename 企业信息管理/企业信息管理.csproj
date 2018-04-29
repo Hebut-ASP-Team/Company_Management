@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="addstaff.aspx" />
     <Content Include="addsupplier.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -88,6 +89,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addstaff.aspx.cs">
+      <DependentUpon>addstaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addstaff.aspx.designer.cs">
+      <DependentUpon>addstaff.aspx</DependentUpon>
+    </Compile>
     <Compile Include="addsupplier.aspx.cs">
       <DependentUpon>addsupplier.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
