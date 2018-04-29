@@ -71,6 +71,8 @@ namespace 企业信息管理 {
                             GridViewRow selectedRow = gvCompanyList.Rows[(int)Session["selectedIndex"]];
                             selectedRow.Cells[2].Text = tbCompanyName.Text;
                             Session.Remove("selectedIndex");
+                            tbID.Text = "";
+                            tbCompanyName.Text = "";
                         } catch (Exception) { }
                         Response.Write("<script>$(document).ready(function(){swal(\"修改成功\", \"\", \"success\");})</script>");
                     } else
