@@ -155,50 +155,54 @@
       <div class="row">
         <div class="col-md-6">
           <div class="card">
-            <h3 class="card-title">未完成作业lalala</h3>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>标题</th>
-                  <th>截止时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>软件过程实验1</td>
-                  <td>2017-5-1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>简述软件过程</td>
-                  <td>2018-6-1</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>软件过程2</td>
-                  <td>2016-5-2</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="mt-40 mb-20">
-              <a class="btn btn-primary icon-btn mr-10"
-                href="./homework.html">
-                <i class="fa fa-file-text"></i>查看所有作业</a>
-              <a class="btn btn-info icon-btn mr-10">
-                <i class="fa fa-github"></i>GitHub</a>
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <h3 class="card-title">未读公告</h3>
-            <ul>
-              <li><a href="notice-detail.html">公告1</a></li>
-            </ul>
-            <a class="btn btn-success icon-btn mr-10" href="./notice.html">
-              <i class="fa fa-bullhorn"></i>所有公告</a>
+            <h3 class="card-title">员工信息列表</h3>
+            <form runat="server">
+              <asp:GridView
+                GridLines="None"
+                DataKeyNames="sup_id"
+                OnPageIndexChanging="gv_company_list_PageIndexChanging"
+                CssClass="table table-striped"
+                runat="server"
+                ID="gv_company_list"
+                AutoGenerateColumns="false" OnRowDeleting="gv_company_list_RowDeleting" OnSelectedIndexChanged="gv_company_list_SelectedIndexChanged">
+                <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
+                <Columns>
+                  <asp:TemplateField HeaderText="员工ID" Visible="false">
+                    <ItemTemplate>
+                      <asp:Label runat="server" Text='<%Eval("sts_id") %>'></asp:Label>
+                    </ItemTemplate>
+                  </asp:TemplateField>
+                  <asp:TemplateField HeaderText="序号">
+                    <ItemTemplate>
+                      <%#Container.DataItemIndex+1 %>
+                    </ItemTemplate>
+                  </asp:TemplateField>
+                  <asp:BoundField DataField="sta_name" HeaderText="姓名" ReadOnly="true" />
+                  <asp:BoundField DataField="sta_sex" HeaderText="性别" ReadOnly="true" />
+                  <asp:BoundField DataField="sta_age" HeaderText="年龄" ReadOnly="true" />
+                  <asp:BoundField DataField="sta_phone" HeaderText="联系方式" ReadOnly="true" />
+                  <asp:BoundField DataField="dep_id" HeaderText="部门" ReadOnly="true" />
+                  <asp:HyperLinkField
+                    DataNavigateUrlFields="sta_name,sta_sex,sta_age,sta_phone,dep_id" DataNavigateUrlFormatString="URL?"
+                    DataTextField="sta_name" DataTextFormatString="修改?"
+                    HeaderText="修改" />
+                  <asp:TemplateField HeaderText="删除">
+                    <ItemTemplate>
+                      <asp:Button runat="server"
+                        ID="delete" CommandName="Delete" CommandArgument="<% Eval('sta_id')%>" Text="删除"
+                        OnClientClick="return confirm('你确定删除吗?')" />
+                    </ItemTemplate>
+                  </asp:TemplateField>
+                </Columns>
+              </asp:GridView>
+              <p class="mt-40 mb-20">
+                <a class="btn btn-primary icon-btn mr-10"
+                  href="./homework.html">
+                  <i class="fa fa-file-text"></i>添加</a>
+                <a class="btn btn-info icon-btn mr-10">
+                  <i class="fa fa-github"></i>查询</a>
+              </p>
+            </form>
           </div>
         </div>
       </div>
