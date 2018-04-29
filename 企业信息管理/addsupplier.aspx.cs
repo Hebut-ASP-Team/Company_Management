@@ -27,9 +27,10 @@ namespace 企业信息管理 {
                     int affectedRows = cmd.ExecuteNonQuery();
                     outputBasicJavascriptLib();
                     if (affectedRows > 0) {
-                        Response.Write("<script>$(document).ready(function(){swal(\"修改成功\", \"\", \"success\");})</script>");
+                        // SweetAlert: http://lipis.github.io/bootstrap-sweetalert/
+                        Response.Write("<script>$(document).ready(function(){swal({title:\"添加成功\", type:\"success\"}, function(){window.location.href=\"suppliers.aspx\";})})</script>");
                     } else
-                        Response.Write("<script>$(document).ready(function(){swal(\"修改失败\", \"\", \"error\");})</script>");
+                        Response.Write("<script>$(document).ready(function(){swal(\"添加失败\", \"\", \"error\");})</script>");
 
                 }
             }

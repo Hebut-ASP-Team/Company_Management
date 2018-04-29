@@ -39,6 +39,7 @@ namespace 企业信息管理 {
                     cmd.ExecuteNonQuery();
                 }
             }
+            standardTable();
         }
 
         protected void gv_company_list_RowDeleting(object sender, GridViewDeleteEventArgs e) {
@@ -74,6 +75,7 @@ namespace 企业信息管理 {
                             tbID.Text = "";
                             tbCompanyName.Text = "";
                         } catch (Exception) { }
+                        // SweetAlert: http://lipis.github.io/bootstrap-sweetalert/
                         Response.Write("<script>$(document).ready(function(){swal(\"修改成功\", \"\", \"success\");})</script>");
                     } else
                         Response.Write("<script>$(document).ready(function(){swal(\"修改失败\", \"\", \"error\");})</script>");
