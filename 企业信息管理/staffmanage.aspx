@@ -153,18 +153,21 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="card">
-            <h3 class="card-title">员工信息列表</h3>
+            <div class="card-title-w-btn">
+              <h3 class="card-title">员工信息列表</h3>
+                <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i>添加</a></p>
+            </div>
             <form runat="server">
               <asp:GridView
                 GridLines="None"
-                DataKeyNames="sup_id"
-                OnPageIndexChanging="gv_company_list_PageIndexChanging"
+                DataKeyNames="sta_id"
+                
                 CssClass="table table-striped"
                 runat="server"
                 ID="gv_company_list"
-                AutoGenerateColumns="false" OnRowDeleting="gv_company_list_RowDeleting" OnSelectedIndexChanged="gv_company_list_SelectedIndexChanged">
+                AutoGenerateColumns="false" >
                 <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
                 <Columns>
                   <asp:TemplateField HeaderText="员工ID" Visible="false">
@@ -195,13 +198,6 @@
                   </asp:TemplateField>
                 </Columns>
               </asp:GridView>
-              <p class="mt-40 mb-20">
-                <a class="btn btn-primary icon-btn mr-10"
-                  href="./homework.html">
-                  <i class="fa fa-file-text"></i>添加</a>
-                <a class="btn btn-info icon-btn mr-10">
-                  <i class="fa fa-github"></i>查询</a>
-              </p>
             </form>
           </div>
         </div>
