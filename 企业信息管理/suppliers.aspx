@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="suppliers.aspx.cs" Inherits="企业信息管理.suppliers"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="suppliers.aspx.cs" Inherits="企业信息管理.suppliers" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -156,16 +157,20 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card">
-            <h3 class="card-title">供应商列表</h3>
+            <div class="card-title-w-btn">
+              <h3 class="card-title">供应商列表</h3>
+              <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i>添加供应商	</a></p>
+            </div>
             <form runat="server">
               <asp:GridView
                 GridLines="None"
                 DataKeyNames="sup_id"
-                OnPageIndexChanging="gv_company_list_PageIndexChanging"
                 CssClass="table table-striped"
                 runat="server"
-                ID="gv_company_list"
-                AutoGenerateColumns="false" OnRowDeleting="gv_company_list_RowDeleting">
+                ID="gvCompanyList"
+                AutoGenerateColumns="false"
+                OnRowCommand="gv_company_list_RowCommand"
+                OnRowDeleting="gv_company_list_RowDeleting">
                 <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
                 <Columns>
                   <asp:TemplateField HeaderText="供应商ID" Visible="false">
@@ -179,10 +184,7 @@
                     </ItemTemplate>
                   </asp:TemplateField>
                   <asp:BoundField DataField="sup_name" HeaderText="供应商" ReadOnly="true" />
-                  <asp:HyperLinkField
-                    DataNavigateUrlFields="sup_id" DataNavigateUrlFormatString="URL?"
-                    DataTextField="sup_name" DataTextFormatString="修改?"
-                    HeaderText="修改" />
+                  <asp:ButtonField HeaderText="修改" Text="修改" CommandName="Update"/>
                   <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
                       <asp:Button runat="server"
@@ -202,7 +204,30 @@
             </form>
           </div>
         </div>
-
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <h3 class="card-title">修改数据</h3>
+            <div class="card-body3">
+              <form class="form-inline" runat="server" visible="false">
+                <div class="form-group">
+                  <label class="control-label">ID</label>
+                  <!--input class="form-control" type="text" placeholder="Enter your name"-->
+                  <asp:TextBox runat="server" CssClass="form-control" ID="tbID" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label">企业名称</label>
+                  <!--input class="form-control" type="text" placeholder="Enter your email"-->
+                  <asp:TextBox runat="server" CssClass="form-control" ID="tbCompanyName"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Subscribe</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -211,5 +236,8 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript">$('#<%=gvCompanyList.ClientID%>').DataTable();</script>
 </body>
 </html>
