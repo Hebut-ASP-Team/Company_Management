@@ -29,9 +29,9 @@ namespace 企业信息管理 {
         protected void showCompanyList() {
             if (!IsPostBack) {
                 using (OleDbConnection conn = new OleDbConnection(connectionStr)) {
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from supplier", conn)) {
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from dbo.supplier", conn)) {
                         DataSet ds = new DataSet();
-                        adapter.Fill(ds, "supplier");
+                        adapter.Fill(ds);
                         gv_company_list.DataSource = ds;
                         gv_company_list.DataBind();
                     }
