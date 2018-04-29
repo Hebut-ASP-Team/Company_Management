@@ -28,6 +28,16 @@ namespace 企业信息管理 {
                         adapter.Fill(ds);
                         gv_company_list.DataSource = ds;
                         gv_company_list.DataBind();
+                        if (gv_company_list.Rows.Count > 0)
+                        {
+                            // 使用<TH>替换<TD>
+                            gv_company_list.UseAccessibleHeader = true;
+                            //HeaderRow将被<thead>包裹，数据行将被<tbody>包裹
+                            gv_company_list.HeaderRow.TableSection = TableRowSection.TableHeader;
+                            // FooterRow将被<tfoot>包裹
+                            gv_company_list.FooterRow.TableSection = TableRowSection.TableFooter;
+                        }
+
                     }
                 }
             }

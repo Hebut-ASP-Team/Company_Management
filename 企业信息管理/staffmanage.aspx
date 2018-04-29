@@ -209,9 +209,9 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
-     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">$('#<%=gv_company_list.ClientID %>').DataTable();</script>
+  <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript">$('#<%=gv_company_list.ClientID %>').DataTable();</script>
 
 </body>
 </html>
