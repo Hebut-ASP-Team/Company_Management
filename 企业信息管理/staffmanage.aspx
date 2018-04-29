@@ -160,7 +160,7 @@
                 <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i>添加</a></p>
             </div>
             <form runat="server">
-              <asp:GridView
+              <asp:GridView 
                 GridLines="None"
                 DataKeyNames="sta_id"
                 
@@ -172,7 +172,7 @@
                 <Columns>
                   <asp:TemplateField HeaderText="员工ID" Visible="false">
                     <ItemTemplate>
-                      <asp:Label runat="server" Text='<%Eval("sts_id") %>'></asp:Label>
+                      <asp:Label runat="server" Text='<%Eval("sta_id") %>'></asp:Label>
                     </ItemTemplate>
                   </asp:TemplateField>
                   <asp:TemplateField HeaderText="序号">
@@ -187,7 +187,7 @@
                   <asp:BoundField DataField="dep_id" HeaderText="部门" ReadOnly="true" />
                   <asp:HyperLinkField
                     DataNavigateUrlFields="sta_name,sta_sex,sta_age,sta_phone,dep_id" DataNavigateUrlFormatString="URL?"
-                    DataTextField="sta_name" DataTextFormatString="修改?"
+                    DataTextField="sta_name" DataTextFormatString="修改"
                     HeaderText="修改" />
                   <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
@@ -209,5 +209,9 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
+     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#<%=gv_company_list.ClientID %>').DataTable();</script>
+
 </body>
 </html>
