@@ -146,7 +146,7 @@
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-vcard-o"></i>供应商管理</h1>
+            <h1><i class="fa fa-vcard-o"></i> 供应商管理</h1>
           </div>
         </div>
         <div class="row">

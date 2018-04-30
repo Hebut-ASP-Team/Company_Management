@@ -9,9 +9,9 @@ using System.Web.UI.WebControls;
 
 namespace 企业信息管理
 {
-    public partial class addstaff : System.Web.UI.Page
+    public partial class addstaff : System.Web.UI.Page 
     {
-        string connectionStr = ConfigurationManager.ConnectionStrings["access2"].ConnectionString;
+        string connectionStr = ConfigurationManager.ConnectionStrings["access"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] == null)
@@ -27,7 +27,7 @@ namespace 企业信息管理
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("insert into staff(sta_name,sta_sex,sta_age,sta_phone,dep_id) values('" + addstaNAME + "','" + addstaSEX + "','" + addstaAGE + "','" + addstaPHONE + "','" + addstaDEP + "')", conn))
+                using (OleDbCommand cmd = new OleDbCommand("insert into staff(sta_id,sta_name,sta_sex,sta_age,sta_phone,dep_id,sta_password) values('"+addstaMAIL+"','" + addstaNAME.Text + "','" + addstaSEX.Text +"'," + addstaAGE.Text + ",'" + addstaPHONE.Text + "'," + addstaDEP.Text+ ",'"+addstaPWD.Text+"')", conn))
                 {
                     conn.Open();
                     int affectedRows = cmd.ExecuteNonQuery();

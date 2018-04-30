@@ -113,31 +113,31 @@
         <ul class="sidebar-menu">
           <li>
             <a href="sell.aspx">
-              <i class="fa fa-dashboard"></i>
+              <i class="fa fa-cart-arrow-down"></i>
               <span>商品销售</span>
             </a>
           </li>
           <li>
             <a href="suppliers.aspx">
-              <i class="fa fa-file-text"></i>
+              <i class="fa fa-truck"></i>
               <span>商品进货及查询</span>
             </a>
           </li>
           <li>
             <a href="stock.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-bank"></i>
               <span>库存管理</span>
             </a>
           </li>
           <li>
             <a href="suppliers.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-vcard-o"></i>
               <span>供应商管理</span>
             </a>
           </li>
           <li class="active">
             <a href="staffmanage.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-address-book"></i>
               <span>员工信息管理</span>
             </a>
           </li>
@@ -148,7 +148,7 @@
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>员工信息管理</h1>
+          <h1><i class="fa fa-address-book"></i>员工信息管理</h1>
         </div>
       </div>
       <div class="row">
@@ -156,7 +156,7 @@
           <div class="card">
             <div class="card-title-w-btn">
               <h3 class="card-title">员工信息列表</h3>
-               <p><a class="btn btn-primary icon-btn" href="addstaff.aspx"><i class="fa fa-plus"></i>添加员工</a></p>
+               <p><a class="btn btn-primary icon-btn" href="addstaff.aspx"><i class="fa fa-plus"></i>添加员工	</a></p>
             </div>        
               <asp:GridView 
                 Font-Size="14px"
@@ -170,11 +170,7 @@
                 OnRowDeleting="gv_company_list_RowDeleting">
                 <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
                 <Columns>
-                  <asp:TemplateField HeaderText="员工ID" Visible="false">
-                    <ItemTemplate>
-                      <asp:Label runat="server" Text='<%Eval("sta_id") %>'></asp:Label>
-                    </ItemTemplate>
-                  </asp:TemplateField>
+                 <asp:BoundField DataField="sta_id" HeaderText="员工ID"></asp:BoundField>
                   <asp:TemplateField HeaderText="序号">
                     <ItemTemplate>
                       <%#Container.DataItemIndex+1 %>
@@ -185,10 +181,7 @@
                   <asp:BoundField DataField="sta_age" HeaderText="年龄" ReadOnly="true" />
                   <asp:BoundField DataField="sta_phone" HeaderText="联系方式" ReadOnly="true" />
                   <asp:BoundField DataField="dep_id" HeaderText="部门" ReadOnly="true" />
-                  <asp:HyperLinkField
-                    DataNavigateUrlFields="sta_name,sta_sex,sta_age,sta_phone,dep_id" DataNavigateUrlFormatString="URL?"
-                    DataTextField="sta_name" DataTextFormatString="修改"
-                    HeaderText="修改" />
+                  <asp:ButtonField HeaderText="修改" Text="修改" CommandName="XX" />
                   <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
                       <asp:Button runat="server"
@@ -205,8 +198,7 @@
           <div class="col-md-12">
             <div class="card">
               <h3 class="card-title">修改数据</h3>
-              <div class="card-body3">
-                <asp:Panel class="form-inline" runat="server">
+              <div class="card-body">            
                   <div class="form-group">
                     <label class="control-label">ID</label>
                     <asp:TextBox Enabled="false" runat="server" CssClass="form-control" ID="staID" />
@@ -224,7 +216,7 @@
                     <asp:TextBox runat="server" CssClass="form-control" ID="staAGE"></asp:TextBox>
                   </div>
                     <div class="form-group">
-                    <label class="control-label">联系方式</label>
+                    <label class="control-label">电话</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="staPHONE"></asp:TextBox>
                   </div>
                     <div class="form-group">
@@ -235,7 +227,7 @@
                     <button id="change" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>修改</button>
                     <asp:Button runat="server" ID="btnUpdate" OnClick="btnUpdate_Click" Style="display: none" />
                   </div>
-                </asp:Panel>
+              
               </div>
             </div>
           </div>
