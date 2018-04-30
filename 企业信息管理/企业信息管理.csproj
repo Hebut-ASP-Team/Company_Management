@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="addpurchaselist.aspx" />
     <Content Include="addsupplier.aspx" />
+    <Content Include="index.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
