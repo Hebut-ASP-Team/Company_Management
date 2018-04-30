@@ -93,6 +93,9 @@
       <DependentUpon>addstaff.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="addstaff.aspx.designer.cs">
+      <DependentUpon>addstaff.aspx</DependentUpon>
+    </Compile>
     <Compile Include="addsupplier.aspx.cs">
       <DependentUpon>addsupplier.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
