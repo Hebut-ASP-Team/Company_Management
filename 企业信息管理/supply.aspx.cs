@@ -66,6 +66,11 @@ namespace 企业信息管理 {
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
+                using (OleDbCommand cmd = new OleDbCommand("delete from purchase_detail where pur_id=" + purId, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
                 using (OleDbCommand cmd = new OleDbCommand("delete from purchase where pur_id=" + purId, conn))
                 {
                     conn.Open();
@@ -129,5 +134,48 @@ namespace 企业信息管理 {
                 purchase_list.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
+
+        /// <summary>
+        /// 修改订单状态
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (Session["selectedIndex"] == null) return;
+            using (OleDbConnection conn = new OleDbConnection(connectionStr))
+            {
+                using (OleDbCommand cmd = new OleDbCommand("update purchase set pur_status='" + tbPurStatus.Text + "' where pur_id=" + tbPurID.Text, conn))
+                {
+                    conn.Open();
+                    int affectedRows = cmd.ExecuteNonQuery();
+                    outputBasicJavascriptLib();
+                    if (affectedRows > 0)
+                    {
+                        try
+                        {
+                            GridViewRow selectedRow = purchase_list.Rows[(int)Session["selectedIndex"]];
+                            selectedRow.Cells[1].Text = tbPurStatus.Text;
+                            Session.Remove("selectedIndex");
+                            tbPurID.Text = "";
+                            tbPurStatus.Text = "";
+                        }
+                        catch (Exception) { }
+                        // SweetAlert: http://lipis.github.io/bootstrap-sweetalert/
+                        Response.Write("<script>$(document).ready(function(){swal(\"修改成功\", \"\", \"success\");})</script>");
+                    }
+                    else
+                        Response.Write("<script>$(document).ready(function(){swal(\"修改失败\", \"\", \"error\");})</script>");
+                    standardTable();
+                }
+            }
+        }
+
+        private void outputBasicJavascriptLib()
+        {
+            Response.Write("<script src=\"js/jquery-2.1.4.min.js\"></script>");
+        }
+
     }
 }
