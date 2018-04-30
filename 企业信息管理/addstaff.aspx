@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="suppliers.aspx.cs" Inherits="企业信息管理.suppliers" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addstaff.aspx.cs" Inherits="企业信息管理.addstaff" %>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta charset="utf-8" />
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,7 +14,7 @@
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <title>供应商管理 - 企业信息管理系统</title>
+  <title>添加供应商 - 企业信息管理系统</title>
 </head>
 <body class="sidebar-mini fixed">
   <div class="wrapper">
@@ -146,68 +147,59 @@
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-dashboard"></i>供应商管理</h1>
+            <h1><i class="fa fa-dashboard"></i>添加员工信息</h1>
+            <ul class="breadcrumb side">
+              <li>
+                <i class="fa fa-home fa-lg"></i>
+              </li>
+              <li class="active">
+                <a href="suppliers.aspx">员工信息管理</a>
+              </li>
+              <li>添加员工信息
+              </li>
+            </ul>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="card">
-              <div class="card-title-w-btn">
-                <h3 class="card-title">供应商列表</h3>
-                <p><a class="btn btn-primary icon-btn" href="addsupplier.aspx"><i class="fa fa-plus"></i>添加供应商	</a></p>
+              <h3 class="card-title">添加员工信息</h3>
+              <div class="card-body">
+                <div class="form-group">
+                    <label class="control-label">姓名</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaNAME"></asp:TextBox>
+                  </div>
+                    <div class="form-group">
+                    <label class="control-label">性别</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaSEX"></asp:TextBox>
+                  </div>
+                    <div class="form-group">
+                    <label class="control-label">年龄</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaAGE"></asp:TextBox>
+                  </div>
+                    <div class="form-group">
+                    <label class="control-label">联系方式</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaPHONE"></asp:TextBox>
+                  </div>
+                    <div class="form-group">
+                    <label class="control-label">部门</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaDEP"></asp:TextBox>
+                  </div>
               </div>
-
-              <asp:GridView
-                Font-Size="14px"
-                GridLines="None"
-                DataKeyNames="sup_id"
-                CssClass="table table-striped"
-                runat="server"
-                ID="gvCompanyList"
-                AutoGenerateColumns="false"
-                OnRowCommand="gv_company_list_RowCommand"
-                OnRowDeleting="gv_company_list_RowDeleting">
-                <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
-                <Columns>
-                  <asp:BoundField DataField="sup_id" HeaderText="供应商ID"></asp:BoundField>
-                  <asp:TemplateField HeaderText="序号">
-                    <ItemTemplate>
-                      <%#Container.DataItemIndex+1 %>
-                    </ItemTemplate>
-                  </asp:TemplateField>
-                  <asp:BoundField DataField="sup_name" HeaderText="供应商" ReadOnly="true" />
-                  <asp:ButtonField HeaderText="修改" Text="修改" CommandName="XX" />
-                  <asp:TemplateField HeaderText="删除">
-                    <ItemTemplate>
-                      <asp:Button runat="server"
-                        ID="delete" CommandName="Delete" CommandArgument="<% Eval('sup_id')%>" Text="删除"
-                        OnClientClick="return confirm('你确定删除吗?')" />
-                    </ItemTemplate>
-                  </asp:TemplateField>
-                </Columns>
-              </asp:GridView>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <h3 class="card-title">修改数据</h3>
-              <div class="card-body3">
-                <asp:Panel class="form-inline" runat="server">
-                  <div class="form-group">
-                    <label class="control-label">ID</label>
-                    <asp:TextBox Enabled="false" runat="server" CssClass="form-control" ID="tbID" />
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label">企业名称</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="tbCompanyName"></asp:TextBox>
-                  </div>
-                  <div class="form-group">
-                    <button id="change" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>修改</button>
-                    <asp:Button runat="server" ID="btnUpdate" OnClick="btnUpdate_Click" Style="display: none" />
-                  </div>
-                </asp:Panel>
+              <div class="card-footer">
+                <button id="btn_commit" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>添加</button>
+                &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-default icon-btn" href="staffmanage.aspx"><i class="fa fa-fw fa-lg fa-times-circle"></i>取消</a>
+                <asp:Button runat="server" style="display:none" ID="btnCommit" OnClick="btnCommit_Click" />
+                <script>
+                  document.getElementById("btn_commit").addEventListener("click", function () {
+                    if ($("#<%=addstaNAME.ClientID %>").val().length > 0) {
+                      document.getElementById("<%=btnCommit.ClientID %>").click();
+                    } else {
+                      swal("请输入员工姓名", "", "error");
+                    }
+                  });
+                </script>
               </div>
             </div>
           </div>
@@ -221,44 +213,7 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
-  <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
   <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
-  <script type="text/javascript">
-    $('#<%=gvCompanyList.ClientID%>').DataTable({
-      language: {
-        "sProcessing": "处理中...",
-        "sLengthMenu": "显示 _MENU_ 项结果",
-        "sZeroRecords": "没有匹配结果",
-        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-        "sInfoPostFix": "",
-        "sSearch": "搜索:",
-        "sUrl": "",
-        "sEmptyTable": "表中数据为空",
-        "sLoadingRecords": "载入中...",
-        "sInfoThousands": ",",
-        "oPaginate": {
-          "sFirst": "首页",
-          "sPrevious": "上页",
-          "sNext": "下页",
-          "sLast": "末页"
-        },
-        "oAria": {
-          "sSortAscending": ": 以升序排列此列",
-          "sSortDescending": ": 以降序排列此列"
-        }
-      }
-    });</script>
-  <script>
-    $("#change").click(function () {
-      if ($("#<%=tbID.ClientID %>").val().length > 0) {
-        document.getElementById("<%=btnUpdate.ClientID %>").click();
-      } else {
-        swal("请先选择一条数据", "", "error");
-      }
-    });
-  </script>
 </body>
 </html>
+
