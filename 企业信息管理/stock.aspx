@@ -165,7 +165,7 @@
               <asp:GridView
                 Font-Size="14px"
                 GridLines="None"
-                DataKeyNames="sup_id"
+                DataKeyNames="goods_id"
                 CssClass="table table-striped"
                 runat="server"
                 ID="gvCompanyList"
@@ -174,18 +174,19 @@
                 OnRowDeleting="gv_company_list_RowDeleting">
                 <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
                 <Columns>
-                  <asp:BoundField DataField="sup_id" HeaderText="供应商ID"></asp:BoundField>
+                  <asp:BoundField DataField="goods_id" HeaderText="商品ID"></asp:BoundField>
                   <asp:TemplateField HeaderText="序号">
                     <ItemTemplate>
                       <%#Container.DataItemIndex+1 %>
                     </ItemTemplate>
                   </asp:TemplateField>
-                  <asp:BoundField DataField="sup_name" HeaderText="供应商" ReadOnly="true" />
-                  <asp:ButtonField HeaderText="修改" Text="修改" CommandName="XX" />
+                  <asp:BoundField DataField="goods_name" HeaderText="商品名称" ReadOnly="true" />
+                  <asp:BoundField DataField="goods_amount" HeaderText="商品数量" ReadOnly="true" />
+                  <asp:ButtonField  HeaderText="修改" Text="修改" CommandName="XX" />
                   <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
                       <asp:Button runat="server"
-                        ID="delete" CommandName="Delete" CommandArgument="<% Eval('sup_id')%>" Text="删除"
+                        ID="delete" CommandName="Delete" CommandArgument="<% Eval('goods_id')%>" Text="删除"
                         OnClientClick="return confirm('你确定删除吗?')" />
                     </ItemTemplate>
                   </asp:TemplateField>
@@ -205,8 +206,12 @@
                     <asp:TextBox Enabled="false" runat="server" CssClass="form-control" ID="tbID" />
                   </div>
                   <div class="form-group">
-                    <label class="control-label">企业名称</label>
+                    <label class="control-label">商品名称</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="tbCompanyName"></asp:TextBox>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">商品数量</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="tbGoodsAmount"></asp:TextBox>
                   </div>
                   <div class="form-group">
                     <button id="change" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>修改</button>
