@@ -70,6 +70,10 @@ namespace 企业信息管理 {
                 GridViewRow selectedRow = gvCompanyList.Rows[index];
                 staID.Text = selectedRow.Cells[0].Text;
                 staNAME.Text = selectedRow.Cells[2].Text;
+                staSEX.Text = selectedRow.Cells[3].Text;
+                staAGE.Text = selectedRow.Cells[4].Text;
+                staPHONE.Text = selectedRow.Cells[5].Text;
+                staDEP.Text = selectedRow.Cells[6].Text;
                 standardTable();
             }
         }
