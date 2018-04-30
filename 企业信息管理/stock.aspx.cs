@@ -26,7 +26,7 @@ namespace 企业信息管理 {
             {
                 using (OleDbConnection conn = new OleDbConnection(connectionStr))
                 {
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from supplier", conn))
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from storage_goods", conn))
                     {
                         DataSet ds = new DataSet();
                         adapter.Fill(ds);
@@ -42,7 +42,7 @@ namespace 企业信息管理 {
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("delete from supplier where sup_id=" + supId, conn))
+                using (OleDbCommand cmd = new OleDbCommand("delete from storage_goods where goods_id=" + supId, conn))
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -69,6 +69,7 @@ namespace 企业信息管理 {
                 GridViewRow selectedRow = gvCompanyList.Rows[index];
                 tbID.Text = selectedRow.Cells[0].Text;
                 tbCompanyName.Text = selectedRow.Cells[2].Text;
+                tbGoodsAmount.Text= selectedRow.Cells[3].Text;
                 standardTable();
             }
         }
@@ -78,7 +79,7 @@ namespace 企业信息管理 {
             if (Session["selectedIndex"] == null) return;
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("update supplier set sup_name='" + tbCompanyName.Text + "' where sup_id=" + tbID.Text, conn))
+                using (OleDbCommand cmd = new OleDbCommand("update storage_goods set goods_name='" + tbCompanyName.Text+"',goods_amount="+ Convert.ToInt32(tbGoodsAmount.Text.ToString()) + " where goods_id=" + tbID.Text, conn))
                 {
                     conn.Open();
                     int affectedRows = cmd.ExecuteNonQuery();
@@ -89,9 +90,11 @@ namespace 企业信息管理 {
                         {
                             GridViewRow selectedRow = gvCompanyList.Rows[(int)Session["selectedIndex"]];
                             selectedRow.Cells[2].Text = tbCompanyName.Text;
+                            selectedRow.Cells[3].Text = tbGoodsAmount.Text;
                             Session.Remove("selectedIndex");
                             tbID.Text = "";
                             tbCompanyName.Text = "";
+                            tbGoodsAmount.Text = "";
                         }
                         catch (Exception) { }
                         // SweetAlert: http://lipis.github.io/bootstrap-sweetalert/

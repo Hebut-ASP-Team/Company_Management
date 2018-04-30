@@ -58,6 +58,15 @@ namespace 企业信息管理 {
         protected global::System.Web.UI.WebControls.TextBox tbCompanyName;
         
         /// <summary>
+        /// tbGoodsAmount 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbGoodsAmount;
+        
+        /// <summary>
         /// btnUpdate 控件。
         /// </summary>
         /// <remarks>
