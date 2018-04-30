@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace 企业信息管理 {
     public partial class addsupplier : System.Web.UI.Page {
-        string connectionStr = ConfigurationManager.ConnectionStrings["access2"].ConnectionString;
+        string connectionStr = ConfigurationManager.ConnectionStrings["access"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e) {
             if (Session["username"] == null) {
