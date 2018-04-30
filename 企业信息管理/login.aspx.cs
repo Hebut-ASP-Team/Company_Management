@@ -24,14 +24,15 @@ namespace 企业信息管理 {
                     = ConfigurationManager.ConnectionStrings["Sqlsever"].ConnectionString;
                 SqlConnection MyCon = new SqlConnection(sqldb);
                 MyCon.Open();
-                SqlCommand cmd = new SqlCommand("select * from staff where sta_id='"+tbUserName.Text+" ' and sta_password='" + tbPassword.Text + "'",MyCon);
+                SqlCommand cmd = new SqlCommand("select * from staff,department where staff.sta_id='" + tbUserName.Text+" ' and sta_password='" + tbPassword.Text + "' and staff.dep_id=department.dep_id", MyCon);
                 SqlDataReader dr = cmd.ExecuteReader();
                 try
                 {
                     if(dr.Read())
                     {
-                        Session["user_id"] = this.tbUserName.Text;
-                        Session["username"] = dr["sta_name"].ToString();
+                        Session["username"] = dr["sta_id"].ToString();
+                        Session["nickname"] = dr["sta_name"].ToString();
+                        Session["comment"] = dr["dep_name"].ToString();
                         Response.Redirect("sell.aspx");
                     }
                     else

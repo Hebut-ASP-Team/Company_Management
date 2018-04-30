@@ -10,7 +10,7 @@
 namespace 企业信息管理 {
     
     
-    public partial class stock {
+    public partial class addstaff{
         
         /// <summary>
         /// username 控件。
@@ -31,48 +31,76 @@ namespace 企业信息管理 {
         protected global::System.Web.UI.WebControls.Label comment;
         
         /// <summary>
-        /// gvCompanyList 控件。
+        /// addstaMAIL 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCompanyList;
+        protected global::System.Web.UI.WebControls.TextBox addstaMAIL;
         
         /// <summary>
-        /// tbID 控件。
+        /// addstaNAME 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbID;
+        protected global::System.Web.UI.WebControls.TextBox addstaNAME;
         
         /// <summary>
-        /// tbCompanyName 控件。
+        /// addstaSEX 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbCompanyName;
+        protected global::System.Web.UI.WebControls.TextBox addstaSEX;
         
         /// <summary>
-        /// tbGoodsAmount 控件。
+        /// addstaAGE 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbGoodsAmount;
+        protected global::System.Web.UI.WebControls.TextBox addstaAGE;
+        
+
+        /// <summary>
+        /// addstaPHONE 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox addstaPHONE;
         
         /// <summary>
-        /// btnUpdate 控件。
+        /// addstaDEP 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdate;
+        protected global::System.Web.UI.WebControls.TextBox addstaDEP;
+        
+        /// <summary>
+        /// addstaPWD 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox addstaPWD;
+        
+        /// <summary>
+        /// btnCommit 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCommit;
     }
 }
