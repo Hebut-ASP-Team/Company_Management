@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,7 +67,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="addstaff.aspx" />
+    <Content Include="addpurchaselist.aspx" />
     <Content Include="addsupplier.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -89,12 +90,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addstaff.aspx.cs">
-      <DependentUpon>addstaff.aspx</DependentUpon>
+    <Compile Include="addpurchaselist.aspx.cs">
+      <DependentUpon>addpurchaselist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="addstaff.aspx.designer.cs">
-      <DependentUpon>addstaff.aspx</DependentUpon>
+    <Compile Include="addpurchaselist.aspx.designer.cs">
+      <DependentUpon>addpurchaselist.aspx</DependentUpon>
     </Compile>
     <Compile Include="addsupplier.aspx.cs">
       <DependentUpon>addsupplier.aspx</DependentUpon>
@@ -170,7 +171,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53354</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

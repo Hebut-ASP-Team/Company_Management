@@ -26,17 +26,18 @@ namespace 企业信息管理 {
             comment.Text = Session["comment"] as string;
             showPurchaseList();
         }
-        protected void purchase_list_RowDeleting(object sender, EventArgs e)
-        {
 
-        }
-
+        /// <summary>
+        /// 显示采购订单表
+        /// </summary>
         protected void showPurchaseList()
         {
-           if (!IsPostBack)
+            if (!IsPostBack)
             {
-                using (OleDbConnection conn = new OleDbConnection(connectionStr)){
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from purchase ", conn)){
+                using (OleDbConnection conn = new OleDbConnection(connectionStr))
+                {
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from purchase ", conn))
+                    {
                         DataSet ds = new DataSet();
                         adapter.Fill(ds, "purchase");
                         purchase_list.DataSource = ds;
@@ -53,7 +54,7 @@ namespace 企业信息管理 {
                     }
                 }
             }
-            
+
         }
 
 
@@ -84,6 +85,48 @@ namespace 企业信息管理 {
             {
                 Delete((int)entry.Value);
                 purchase_list.Rows[e.RowIndex].Visible = false;
+            }
+        }
+        /// <summary>
+        /// 显示采购明细表
+        /// </summary>
+        protected void showPurchaseDetailList(int pur_id)
+        {
+            
+                using (OleDbConnection conn = new OleDbConnection(connectionStr))
+                {
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM purchase_detail WHERE pur_id=" + pur_id, conn))
+                    {
+                        DataSet ds = new DataSet();
+                        adapter.Fill(ds, "purchase_detail");
+                        purchase_detail_list.DataSource = ds;
+                        purchase_detail_list.DataBind();                   
+                    }             
+            }
+        }
+        protected void purchase_list_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("detail"))
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow selectedRow =purchase_list.Rows[index];
+                int pur_id = Convert.ToInt32(selectedRow.Cells[0].Text);
+                showPurchaseDetailList(pur_id);
+                standardTable();
+            }
+        }
+
+        // 修改属性, 生成带有thead和tfoot的标准table
+        private void standardTable()
+        {
+            if (purchase_list.Rows.Count > 0)
+            {
+                // 使用<TH>替换<TD>
+                purchase_list.UseAccessibleHeader = true;
+                //HeaderRow将被<thead>包裹，数据行将被<tbody>包裹
+                purchase_list.HeaderRow.TableSection = TableRowSection.TableHeader;
+                // FooterRow将被<tfoot>包裹
+                purchase_list.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
     }
