@@ -14,6 +14,11 @@
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <title>库存管理 - 企业信息管理系统hyhtest</title>
+    <style type="text/css">
+        .auto-style1 {
+            height: 37px;
+        }
+    </style>
 </head>
 <body class="sidebar-mini fixed">
   <div class="wrapper">
@@ -170,9 +175,9 @@
                   <td>2017-5-1</td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>简述软件过程</td>
-                  <td>2018-6-1</td>
+                  <td class="auto-style1">2</td>
+                  <td class="auto-style1">简述软件过程</td>
+                  <td class="auto-style1">2018-6-1</td>
                 </tr>
                 <tr>
                   <td>3</td>

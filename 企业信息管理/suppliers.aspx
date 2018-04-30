@@ -103,7 +103,7 @@
               <asp:Label runat="server" ID="username" />
             </p>
             <p class="designation">
-              <asp:Label runat="server" ID="comment" />
+              <asp:Label CssClass="designation" runat="server" ID="comment" />
             </p>
           </div>
         </div>
