@@ -41,9 +41,19 @@ namespace 企业信息管理 {
                         adapter.Fill(ds, "purchase");
                         purchase_list.DataSource = ds;
                         purchase_list.DataBind();
+                        if (purchase_list.Rows.Count > 0)
+                        {
+                            // 使用<TH>替换<TD>
+                            purchase_list.UseAccessibleHeader = true;
+                            //HeaderRow将被<thead>包裹，数据行将被<tbody>包裹
+                            purchase_list.HeaderRow.TableSection = TableRowSection.TableHeader;
+                            // FooterRow将被<tfoot>包裹
+                            purchase_list.FooterRow.TableSection = TableRowSection.TableFooter;
+                        }
                     }
                 }
             }
+            
         }
 
 

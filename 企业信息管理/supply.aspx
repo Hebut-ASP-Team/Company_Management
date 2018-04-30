@@ -157,8 +157,11 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="card">
-            <h3 class="card-title">商品进货列表</h3>
+         <div class="card">
+          <div class="card-title-w-btn">
+             <h3 class="card-title">采购信息列表</h3>
+                <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i>添加</a></p>
+            </div>
           
               <form runat="server">
                   <asp:GridView 
@@ -177,6 +180,8 @@
                               <asp:BoundField DataField="pur_money" HeaderText="采购金额" />
                               <asp:BoundField DataField="sta_id" HeaderText="采购人员ID" />
                               <asp:BoundField DataField="pur_creat_time" HeaderText="采购时间" /> 
+                              
+                              
                               <asp:TemplateField HeaderText="删除">
                                  <ItemTemplate>
                                     <asp:Button runat="server"
@@ -188,16 +193,20 @@
                   </asp:GridView>
 
               </form>
+             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  
   <!-- Javascripts-->
   <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
+   <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript">$('#<%=purchase_list.ClientID %>').DataTable();</script>
 </body>
 </html>
 
