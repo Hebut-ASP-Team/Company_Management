@@ -98,11 +98,15 @@
         <div class="user-panel">
           <div class="pull-left image">
             <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
-              alt="User Image">
+              alt="User Image" />
           </div>
-          <div class="pull-left info">
-            <p>用户名</p>
-            <p class="designation">属性</p>
+            <div class="pull-left info">
+            <p>
+              <asp:Label runat="server" ID="username" />
+            </p>
+            <p class="designation">
+              <asp:Label runat="server" ID="comment" />
+            </p>
           </div>
         </div>
         <!-- 侧边菜单-->
@@ -140,74 +144,148 @@
         </ul>
       </section>
     </aside>
+    <form runat="server">
     <div class="content-wrapper">
       <div class="page-title">
         <div>
           <h1><i class="fa fa-dashboard"></i>员工信息管理</h1>
         </div>
-        <div>
-          <ul class="breadcrumb">
-            <li><i class="fa fa-home fa-lg"></i></li>
-            <li><a href="#">主页</a></li>
-          </ul>
-        </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="card">
-            <h3 class="card-title">未完成作业</h3>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>标题</th>
-                  <th>截止时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>软件过程实验1</td>
-                  <td>2017-5-1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>简述软件过程</td>
-                  <td>2018-6-1</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>软件过程2</td>
-                  <td>2016-5-2</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="mt-40 mb-20">
-              <a class="btn btn-primary icon-btn mr-10"
-                href="./homework.html">
-                <i class="fa fa-file-text"></i>查看所有作业</a>
-              <a class="btn btn-info icon-btn mr-10">
-                <i class="fa fa-github"></i>GitHub</a>
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <h3 class="card-title">未读公告</h3>
-            <ul>
-              <li><a href="notice-detail.html">公告1</a></li>
-            </ul>
-            <a class="btn btn-success icon-btn mr-10" href="./notice.html">
-              <i class="fa fa-bullhorn"></i>所有公告</a>
+            <div class="card-title-w-btn">
+              <h3 class="card-title">员工信息列表</h3>
+               <p><a class="btn btn-primary icon-btn" href="addstaff.aspx"><i class="fa fa-plus"></i>添加员工</a></p>
+            </div>        
+              <asp:GridView 
+                Font-Size="14px"
+                GridLines="None"
+                DataKeyNames="sta_id"
+                CssClass="table table-striped"
+                runat="server"
+                ID="gvCompanyList"
+                AutoGenerateColumns="false"
+                OnRowCommand="gv_company_list_RowCommand"
+                OnRowDeleting="gv_company_list_RowDeleting">
+                <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
+                <Columns>
+                  <asp:TemplateField HeaderText="员工ID" Visible="false">
+                    <ItemTemplate>
+                      <asp:Label runat="server" Text='<%Eval("sta_id") %>'></asp:Label>
+                    </ItemTemplate>
+                  </asp:TemplateField>
+                  <asp:TemplateField HeaderText="序号">
+                    <ItemTemplate>
+                      <%#Container.DataItemIndex+1 %>
+                    </ItemTemplate>
+                  </asp:TemplateField>
+                  <asp:BoundField DataField="sta_name" HeaderText="姓名" ReadOnly="true" />
+                  <asp:BoundField DataField="sta_sex" HeaderText="性别" ReadOnly="true" />
+                  <asp:BoundField DataField="sta_age" HeaderText="年龄" ReadOnly="true" />
+                  <asp:BoundField DataField="sta_phone" HeaderText="联系方式" ReadOnly="true" />
+                  <asp:BoundField DataField="dep_id" HeaderText="部门" ReadOnly="true" />
+                  <asp:HyperLinkField
+                    DataNavigateUrlFields="sta_name,sta_sex,sta_age,sta_phone,dep_id" DataNavigateUrlFormatString="URL?"
+                    DataTextField="sta_name" DataTextFormatString="修改"
+                    HeaderText="修改" />
+                  <asp:TemplateField HeaderText="删除">
+                    <ItemTemplate>
+                      <asp:Button runat="server"
+                        ID="delete" CommandName="Delete" CommandArgument="<% Eval('sta_id')%>" Text="删除"
+                        OnClientClick="return confirm('你确定删除吗?')" />
+                    </ItemTemplate>
+                  </asp:TemplateField>
+                </Columns>
+              </asp:GridView>         
           </div>
         </div>
       </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <h3 class="card-title">修改数据</h3>
+              <div class="card-body3">
+                <asp:Panel class="form-inline" runat="server">
+                  <div class="form-group">
+                    <label class="control-label">ID</label>
+                    <asp:TextBox Enabled="false" runat="server" CssClass="form-control" ID="staID" />
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">姓名</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staNAME"></asp:TextBox>
+                  </div>
+                    <div class="form-group">
+                    <label class="control-label">性别</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staSEX"></asp:TextBox>
+                  </div>
+                    <div class="form-group">
+                    <label class="control-label">年龄</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staAGE"></asp:TextBox>
+                  </div>
+                    <div class="form-group">
+                    <label class="control-label">联系方式</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staPHONE"></asp:TextBox>
+                  </div>
+                    <div class="form-group">
+                    <label class="control-label">部门</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staDEP"></asp:TextBox>
+                  </div>
+                  <div class="form-group">
+                    <button id="change" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>修改</button>
+                    <asp:Button runat="server" ID="btnUpdate" OnClick="btnUpdate_Click" Style="display: none" />
+                  </div>
+                </asp:Panel>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
+   </form>
   </div>
   <!-- Javascripts-->
-  <script src="js/jquery-2.1.4.min.js"></script>
+   <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+  <script type="text/javascript">
+    $('#<%=gvCompanyList.ClientID%>').DataTable({
+      language: {
+        "sProcessing": "处理中...",
+        "sLengthMenu": "显示 _MENU_ 项结果",
+        "sZeroRecords": "没有匹配结果",
+        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索:",
+        "sUrl": "",
+        "sEmptyTable": "表中数据为空",
+        "sLoadingRecords": "载入中...",
+        "sInfoThousands": ",",
+        "oPaginate": {
+          "sFirst": "首页",
+          "sPrevious": "上页",
+          "sNext": "下页",
+          "sLast": "末页"
+        },
+        "oAria": {
+          "sSortAscending": ": 以升序排列此列",
+          "sSortDescending": ": 以降序排列此列"
+        }
+      }
+    });</script>
+  <script>
+    $("#change").click(function () {
+      if ($("#<%=staID.ClientID %>").val().length > 0) {
+        document.getElementById("<%=btnUpdate.ClientID %>").click();
+      } else {
+        swal("请先选择一条数据", "", "error");
+      }
+    });
+  </script>
 </body>
 </html>
