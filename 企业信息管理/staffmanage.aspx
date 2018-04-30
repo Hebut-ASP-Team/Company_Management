@@ -113,31 +113,31 @@
         <ul class="sidebar-menu">
           <li>
             <a href="sell.aspx">
-              <i class="fa fa-dashboard"></i>
+              <i class="fa fa-cart-arrow-down"></i>
               <span>商品销售</span>
             </a>
           </li>
           <li>
             <a href="suppliers.aspx">
-              <i class="fa fa-file-text"></i>
+              <i class="fa fa-truck"></i>
               <span>商品进货及查询</span>
             </a>
           </li>
           <li>
             <a href="stock.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-bank"></i>
               <span>库存管理</span>
             </a>
           </li>
           <li>
             <a href="suppliers.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-vcard-o"></i>
               <span>供应商管理</span>
             </a>
           </li>
           <li class="active">
             <a href="staffmanage.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-address-book"></i>
               <span>员工信息管理</span>
             </a>
           </li>
@@ -148,7 +148,7 @@
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>员工信息管理</h1>
+          <h1><i class="fa fa-address-book"></i>员工信息管理</h1>
         </div>
       </div>
       <div class="row">
