@@ -119,6 +119,15 @@ namespace 企业信息管理 {
                 showPurchaseDetailList(pur_id);
                 standardTable();
             }
+            else if(e.CommandName.Equals("change"))
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow selectedRow = purchase_list.Rows[index];
+               
+                tbPurID.Text = selectedRow.Cells[0].Text; 
+                tbPurStatus.Text = selectedRow.Cells[1].Text;
+                standardTable();
+            }
         }
 
         // 修改属性, 生成带有thead和tfoot的标准table
@@ -146,7 +155,7 @@ namespace 企业信息管理 {
             if (Session["selectedIndex"] == null) return;
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("update purchase set pur_status='" + tbPurStatus.Text + "' where pur_id=" + tbPurID.Text, conn))
+                using (OleDbCommand cmd = new OleDbCommand("update purchase set pur_status ="+tbPurStatus.Text + "where pur_id=" + tbPurID.Text, conn))
                 {
                     conn.Open();
                     int affectedRows = cmd.ExecuteNonQuery();

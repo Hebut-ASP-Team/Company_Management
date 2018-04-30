@@ -210,33 +210,36 @@
                               <asp:BoundField DataField="purdet_supplier" HeaderText="供应商" /> 
                      </Columns>
                   </asp:GridView>
-              </form>
-             </div>
-          </div>
-        </div>
-      <div class="row">
+
+                    <div class="row">
           <div class="col-md-12">
             <div class="card">
               <h3 class="card-title">修改订单状态</h3>
               <div class="card-body3">
-                <asp:Panel class="form-inline" runat="server">
-                  <div class="form-group">
-                    <label class="control-label">采购ID</label>
+
+              <asp:Panel class="form_inline" ID="Panel1" runat="server" >
+                  <div class="form_group" runat="server">
+                    <label class="control-label">ID</label>
                     <asp:TextBox Enabled="false" runat="server" CssClass="form-control" ID="tbPurID" />
                   </div>
-                  <div class="form-group">
-                    <label class="control-label">订单状态</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="tbPurStatus"></asp:TextBox>
+                  <div class="form-group" runat="server">
+                     <label class="control-label">状态</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="tbPurStatus" />
                   </div>
                   <div class="form-group">
-                    <button id="change" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>修改</button>
+                    <button id="change_purchase" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>修改</button>
                     <asp:Button runat="server" ID="btnUpdate" OnClick="btnUpdate_Click" Style="display: none" />
                   </div>
-                </asp:Panel>
+              </asp:Panel>
               </div>
             </div>
           </div>
         </div>
+              </form>
+             </div>
+          </div>
+        </div>
+    
       </div>
     </div>
   
@@ -245,9 +248,45 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
-   <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
-  <script type="text/javascript">$('#<%=purchase_list.ClientID %>').DataTable();</script>
+  <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+  <script type="text/javascript">
+    $('#<%=purchase_list.ClientID%>').DataTable({
+      language: {
+        "sProcessing": "处理中...",
+        "sLengthMenu": "显示 _MENU_ 项结果",
+        "sZeroRecords": "没有匹配结果",
+        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索:",
+        "sUrl": "",
+        "sEmptyTable": "表中数据为空",
+        "sLoadingRecords": "载入中...",
+        "sInfoThousands": ",",
+        "oPaginate": {
+          "sFirst": "首页",
+          "sPrevious": "上页",
+          "sNext": "下页",
+          "sLast": "末页"
+        },
+        "oAria": {
+          "sSortAscending": ": 以升序排列此列",
+          "sSortDescending": ": 以降序排列此列"
+        }
+      }
+    });</script>
+  <script>
+    $("#change").click(function () {
+      if ($("#<%=tbPurID.ClientID %>").val().length > 0) {
+        document.getElementById("<%=btnUpdate.ClientID %>").click();
+      } else {
+        swal("请先选择一条数据", "", "error");
+      }
+    });
+  </script>
 </body>
 </html>
 
