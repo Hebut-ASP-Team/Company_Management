@@ -128,13 +128,13 @@
               <span>库存管理</span>
             </a>
           </li>
-          <li class="active">
+          <li>
             <a href="suppliers.aspx">
               <i class="fa fa-bullhorn"></i>
               <span>供应商管理</span>
             </a>
           </li>
-          <li>
+          <li  class="active">
             <a href="staffmanage.aspx">
               <i class="fa fa-bullhorn"></i>
               <span>员工信息管理</span>
@@ -165,7 +165,11 @@
             <div class="card">
               <h3 class="card-title">添加员工信息</h3>
               <div class="card-body">
-                <div class="form-group">
+                    <div class="form-group">
+                    <label class="control-label">邮箱</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaMAIL"></asp:TextBox>
+                  </div>
+                    <div class="form-group">
                     <label class="control-label">姓名</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="addstaNAME"></asp:TextBox>
                   </div>
@@ -184,6 +188,10 @@
                     <div class="form-group">
                     <label class="control-label">部门</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="addstaDEP"></asp:TextBox>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">密码</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaPWD"></asp:TextBox>
                   </div>
               </div>
               <div class="card-footer">

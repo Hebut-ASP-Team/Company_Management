@@ -30,7 +30,7 @@ namespace 企业信息管理 {
             {
                 using (OleDbConnection conn = new OleDbConnection(connectionStr))
                 {
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from supplier", conn))
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from staff", conn))
                     {
                         DataSet ds = new DataSet();
                         adapter.Fill(ds);
@@ -45,7 +45,7 @@ namespace 企业信息管理 {
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("delete from staff where sta_id=" + staId, conn))
+                using (OleDbCommand cmd = new OleDbCommand("delete from staff where sta_id='" + staId+"'", conn))
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -79,7 +79,7 @@ namespace 企业信息管理 {
             if (Session["selectedIndex"] == null) return;
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("update staff set sta_name='" + staNAME.Text + "' where sta_id=" + staID.Text, conn))
+                using (OleDbCommand cmd = new OleDbCommand("update staff set sta_name='" + staNAME.Text + "',sta_sex='"+staSEX.Text+ "',sta_age=" + staAGE.Text+ ",sta_phone='" + staPHONE.Text + "',dep_id=" + staDEP.Text + "  where sta_id='" + staID.Text+"'", conn))
                 {
                     conn.Open();
                     int affectedRows = cmd.ExecuteNonQuery();
@@ -93,6 +93,10 @@ namespace 企业信息管理 {
                             Session.Remove("selectedIndex");
                             staID.Text = "";
                             staNAME.Text = "";
+                            staSEX.Text = "";
+                            staAGE.Text = "";
+                            staDEP.Text = "";
+                            staPHONE.Text = "";
                         }
                         catch (Exception) { }
                         // SweetAlert: http://lipis.github.io/bootstrap-sweetalert/
