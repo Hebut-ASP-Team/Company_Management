@@ -68,7 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addpurchaselist.aspx" />
+    <Content Include="addstaff.aspx" />
     <Content Include="addsupplier.aspx" />
+    <Content Include="index.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -96,6 +98,13 @@
     </Compile>
     <Compile Include="addpurchaselist.aspx.designer.cs">
       <DependentUpon>addpurchaselist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addstaff.aspx.cs">
+      <DependentUpon>addstaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addstaff.aspx.designer.cs">
+      <DependentUpon>addstaff.aspx</DependentUpon>
     </Compile>
     <Compile Include="addsupplier.aspx.cs">
       <DependentUpon>addsupplier.aspx</DependentUpon>
