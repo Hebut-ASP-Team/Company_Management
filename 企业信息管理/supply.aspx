@@ -100,9 +100,13 @@
               alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>用户名</p>
-            <p class="designation">属性</p>
-          </div>
+            <p>
+              <asp:Label runat="server" ID="username" />
+            </p>
+            <p class="designation">
+              <asp:Label runat="server" ID="comment" />
+            </p>
+         </div>
         </div>
         <!-- 侧边菜单-->
         <ul class="sidebar-menu">
@@ -152,62 +156,57 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
-          <div class="card">
-            <h3 class="card-title">未完成作业</h3>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>标题</th>
-                  <th>截止时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>软件过程实验1</td>
-                  <td>2017-5-1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>简述软件过程</td>
-                  <td>2018-6-1</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>软件过程2</td>
-                  <td>2016-5-2</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="mt-40 mb-20">
-              <a class="btn btn-primary icon-btn mr-10"
-                href="./homework.html">
-                <i class="fa fa-file-text"></i>查看所有作业</a>
-              <a class="btn btn-info icon-btn mr-10">
-                <i class="fa fa-github"></i>GitHub</a>
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <h3 class="card-title">未读公告</h3>
-            <ul>
-              <li><a href="notice-detail.html">公告1</a></li>
-            </ul>
-            <a class="btn btn-success icon-btn mr-10" href="./notice.html">
-              <i class="fa fa-bullhorn"></i>所有公告</a>
+        <div class="col-md-12">
+         <div class="card">
+          <div class="card-title-w-btn">
+             <h3 class="card-title">采购信息列表</h3>
+                <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i>添加</a></p>
+            </div>
+          
+              <form runat="server">
+                  <asp:GridView 
+                      ID="purchase_list" 
+                      runat="server"   
+                      CssClass="table table-striped"
+                     
+                      AutoGenerateColumns="False" 
+                      DataKeyNames="pur_id" 
+                      GridLines="None"
+                      OnRowDeleting="purchase_list_RowDeleting">
+                       <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
+                      <Columns>
+                              <asp:BoundField DataField="pur_id" HeaderText="采购ID" />
+                              <asp:BoundField DataField="pur_status" HeaderText="采购状态" />
+                              <asp:BoundField DataField="pur_money" HeaderText="采购金额" />
+                              <asp:BoundField DataField="sta_id" HeaderText="采购人员ID" />
+                              <asp:BoundField DataField="pur_creat_time" HeaderText="采购时间" /> 
+                              
+                              
+                              <asp:TemplateField HeaderText="删除">
+                                 <ItemTemplate>
+                                    <asp:Button runat="server"
+                           ID="delete" CommandName="Delete" CommandArgument="<% Eval('pur_id')%>" Text="删除"
+                         OnClientClick="return confirm('你确定删除吗?')" />
+                                </ItemTemplate>
+                             </asp:TemplateField>
+                      </Columns>
+                  </asp:GridView>
+
+              </form>
+             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  
   <!-- Javascripts-->
   <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
+   <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript">$('#<%=purchase_list.ClientID %>').DataTable();</script>
 </body>
 </html>
 

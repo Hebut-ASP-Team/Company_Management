@@ -27,7 +27,7 @@ namespace 企业信息管理
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("insert into staff(sta_id,sta_name,sta_sex,sta_age,sta_phone,dep_id,sta_password) values('"+addstaMAIL+"','" + addstaNAME.Text + "','" + addstaSEX.Text +"'," + addstaAGE.Text + ",'" + addstaPHONE.Text + "'," + addstaDEP.Text+ ",'"+addstaPWD.Text+"')", conn))
+                using (OleDbCommand cmd = new OleDbCommand("insert into staff(sta_id,sta_name,sta_sex,sta_age,sta_phone,dep_id,sta_password) values('"+addstaMAIL.Text+"','" + addstaNAME.Text + "','" + addstaSEX.Text +"'," + addstaAGE.Text + ",'" + addstaPHONE.Text + "'," + addstaDEP.Text+ ",'"+addstaPWD.Text+"')", conn))
                 {
                     conn.Open();
                     int affectedRows = cmd.ExecuteNonQuery();
@@ -35,7 +35,7 @@ namespace 企业信息管理
                     if (affectedRows > 0)
                     {
                         // SweetAlert: http://lipis.github.io/bootstrap-sweetalert/
-                        Response.Write("<script>$(document).ready(function(){swal({title:\"添加成功\", type:\"success\"}, function(){window.location.href=\"suppliers.aspx\";})})</script>");
+                        Response.Write("<script>$(document).ready(function(){swal({title:\"添加成功\", type:\"success\"}, function(){window.location.href=\"staffmanage.aspx\";})})</script>");
                     }
                     else
                         Response.Write("<script>$(document).ready(function(){swal(\"添加失败\", \"\", \"error\");})</script>");
