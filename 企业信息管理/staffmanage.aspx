@@ -201,34 +201,37 @@
               <div class="card-body3"> 
                 <asp:Panel class="form-inline" runat="server">           
                   <div class="form-group">
-                    <label class="control-label">ID</label>
-                    <asp:TextBox Enabled="false" runat="server" CssClass="form-control" ID="staID" />
+                    <label class="control-label" style="margin-left: 12px;">ID</label>
+                    <asp:TextBox Enabled="false" runat="server" CssClass="form-control" ID="staID"  style="margin-left: 10px;margin-right: 40px;"/>
                   </div>
                   <div class="form-group">
                     <label class="control-label">姓名</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="staNAME"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staNAME" style="margin-left: 10px;margin-right: 40px;"></asp:TextBox>
                   </div>
                     <div class="form-group">
                     <label class="control-label">性别</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="staSEX"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staSEX" style="margin-left: 10px;margin-right: 40px;"></asp:TextBox>
                   </div>
                 </asp:Panel>
+                <asp:Panel class="form-inline" runat="server" style="margin-top: 10px;">  
                     <div class="form-group">
                     <label class="control-label">年龄</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="staAGE"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staAGE" style="margin-left: 10px;margin-right: 40px;"></asp:TextBox>
                   </div>
                     <div class="form-group">
                     <label class="control-label">电话</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="staPHONE"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staPHONE" style="margin-left: 10px;margin-right: 40px;"></asp:TextBox>
                   </div>
                     <div class="form-group">
                     <label class="control-label">部门</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="staDEP"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="staDEP" style="margin-left: 10px;margin-right: 40px;"></asp:TextBox>
                   </div>
-                  <div class="form-group">
+                </asp:Panel>
+                  <div class="form-group"  style="float:right;margin-top:14px;">
                     <button id="change" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>修改</button>
                     <asp:Button runat="server" ID="btnUpdate" OnClick="btnUpdate_Click" Style="display: none" />
                   </div>
+                  <div class="clearfix" />
               
               </div>
             </div>
