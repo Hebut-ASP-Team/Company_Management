@@ -198,7 +198,8 @@
           <div class="col-md-12">
             <div class="card">
               <h3 class="card-title">修改数据</h3>
-              <div class="card-body">            
+              <div class="card-body3"> 
+                <asp:Panel class="form-inline" runat="server">           
                   <div class="form-group">
                     <label class="control-label">ID</label>
                     <asp:TextBox Enabled="false" runat="server" CssClass="form-control" ID="staID" />
@@ -211,6 +212,7 @@
                     <label class="control-label">性别</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="staSEX"></asp:TextBox>
                   </div>
+                </asp:Panel>
                     <div class="form-group">
                     <label class="control-label">年龄</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="staAGE"></asp:TextBox>
