@@ -90,6 +90,10 @@ namespace 企业信息管理 {
                         {
                             GridViewRow selectedRow = gvCompanyList.Rows[(int)Session["selectedIndex"]];
                             selectedRow.Cells[2].Text = staNAME.Text;
+                            selectedRow.Cells[3].Text = staSEX.Text;
+                            selectedRow.Cells[4].Text = staAGE.Text;
+                            selectedRow.Cells[5].Text = staPHONE.Text;
+                            selectedRow.Cells[6].Text = staDEP.Text;
                             Session.Remove("selectedIndex");
                             staID.Text = "";
                             staNAME.Text = "";
