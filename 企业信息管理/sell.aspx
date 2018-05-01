@@ -179,15 +179,44 @@
                   <asp:BoundField DataField="goods_id" HeaderText="销售商品编号" ReadOnly="true" />
                   <asp:BoundField DataField="goods_name" HeaderText="销售商品名称" ReadOnly="true" />
                   <asp:BoundField DataField="goods_amount" HeaderText="剩余数量" ReadOnly="true" />
-                  <asp:TemplateField HeaderText="购买数量">
+                  <asp:TemplateField HeaderText="购买">
                     <ItemTemplate>
                       <!--<asp:Button runat="server"
                         ID="sell" CommandName="Sell" CommandArgument="<% Eval('gooda_id')%>" Text="购买"
                         OnClientClick="return confirm('确认订单?')" />-->
-                        <asp:TextBox runat="server" CssClass="form-control" ID="sellamount"></asp:TextBox>
+                       <div class=" add-task-row">
+                                  <!-- Button trigger modal -->
+                                  <button type="button" data-toggle="modal" data-target="#myModal0">
+                                  购买
+                                  </button>
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="myModal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <h4 class="modal-title" id="myModalLabel0">购买数量</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <h5>商品ID</h5>
+                                          <label id ="goodsid"></label>
+                                          <h5>商品名称</h5>
+                                          <label id ="goodsname"></label>
+                                          <h5>剩余数量</h5>
+                                          <label id ="goodsamount"></label>
+                                          <h5>购买数量</h5>
+                                          <input type="number" class="form-control" id ="goodsAmount">
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                          <button type="button" class="btn btn-success" onclick="save">确认</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--<a class="btn btn-default btn-sm pull-right" href="todo_list.html#">查看所有</a>-->
+                              </div>
                     </ItemTemplate>
-                   
-                  <asp:ButtonField  HeaderText="确认" Text="购买" CommandName="XX" />
                   </asp:TemplateField>
                 </Columns>
                 <RowStyle VerticalAlign ="Middle" />
@@ -272,6 +301,11 @@
           "sSortAscending": ": 以升序排列此列",
           "sSortDescending": ": 以降序排列此列"
         }
+      }
+    });</script>
+</body>
+</html>
+
       }
     });</script>
 </body>
