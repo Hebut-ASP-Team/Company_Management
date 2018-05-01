@@ -177,10 +177,10 @@
                     </ItemTemplate>
                   </asp:TemplateField>
                   <asp:BoundField DataField="sta_name" HeaderText="姓名" ReadOnly="true" />
-                  <asp:BoundField DataField="sta_sex" HeaderText="性别" ReadOnly="true" />
+                  <asp:BoundField DataField="sta_sexC" HeaderText="性别" ReadOnly="true" />
                   <asp:BoundField DataField="sta_age" HeaderText="年龄" ReadOnly="true" />
                   <asp:BoundField DataField="sta_phone" HeaderText="联系方式" ReadOnly="true" />
-                  <asp:BoundField DataField="dep_id" HeaderText="部门" ReadOnly="true" />
+                  <asp:BoundField DataField="dep_name" HeaderText="部门" ReadOnly="true" />
                   <asp:ButtonField HeaderText="修改" Text="修改" CommandName="XX" />
                   <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
@@ -210,8 +210,11 @@
                   </div>
                     <div class="form-group">
                     <label class="control-label">性别</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="staSEX" style="margin-left: 10px;margin-right: 40px;"></asp:TextBox>
-                  </div>
+                    <asp:DropDownList ID="staSEX" CssClass="form-control" runat="server" style="margin-left: 10px;margin-right: 40px;">
+                        <asp:ListItem Text="男" Value="F"></asp:ListItem>
+                        <asp:ListItem Text="女" Value="M"></asp:ListItem>
+                      </asp:DropDownList>
+                    </div>
                 </asp:Panel>
                 <asp:Panel class="form-inline" runat="server" style="margin-top: 10px;">  
                     <div class="form-group">

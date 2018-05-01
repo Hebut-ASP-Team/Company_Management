@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
@@ -30,7 +31,7 @@ namespace 企业信息管理 {
             {
                 using (OleDbConnection conn = new OleDbConnection(connectionStr))
                 {
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from staff", conn))
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from staff,department,staff_sex where staff.dep_id=department.dep_id and staff.sta_sex=staff.sta_sex", conn))
                     {
                         DataSet ds = new DataSet();
                         adapter.Fill(ds);
@@ -70,6 +71,10 @@ namespace 企业信息管理 {
                 GridViewRow selectedRow = gvCompanyList.Rows[index];
                 staID.Text = selectedRow.Cells[0].Text;
                 staNAME.Text = selectedRow.Cells[2].Text;
+                staSEX.SelectedValue = selectedRow.Cells[3].Text;
+                staAGE.Text = selectedRow.Cells[4].Text;
+                staPHONE.Text = selectedRow.Cells[5].Text;
+                staDEP.Text = selectedRow.Cells[6].Text;
                 standardTable();
             }
         }
@@ -77,9 +82,18 @@ namespace 企业信息管理 {
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             if (Session["selectedIndex"] == null) return;
+            string sqldb
+                    = ConfigurationManager.ConnectionStrings["Sqlsever"].ConnectionString;
+            SqlConnection MyCon_hyh = new SqlConnection(sqldb);
+            MyCon_hyh.Open();
+            SqlCommand cmd_hyh = new SqlCommand("select * from department where dep_name='"+ staDEP.Text + "'", MyCon_hyh);
+            SqlDataReader dr_hyh = cmd_hyh.ExecuteReader();
+            int dep_id=0;
+            if (dr_hyh.Read())
+                dep_id = Convert.ToInt32(dr_hyh["dep_id"].ToString());
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("update staff set sta_name='" + staNAME.Text + "',sta_sex='"+staSEX.Text+ "',sta_age=" + staAGE.Text+ ",sta_phone='" + staPHONE.Text + "',dep_id=" + staDEP.Text + "  where sta_id='" + staID.Text+"'", conn))
+                using (OleDbCommand cmd = new OleDbCommand("update staff set sta_name='" + staNAME.Text + "',sta_sex='"+staSEX.SelectedValue+ "',sta_age=" + staAGE.Text+ ",sta_phone='" + staPHONE.Text + "',dep_id=" + dep_id + "  where sta_id='" + staID.Text+"'", conn))
                 {
                     conn.Open();
                     int affectedRows = cmd.ExecuteNonQuery();
@@ -90,17 +104,18 @@ namespace 企业信息管理 {
                         {
                             GridViewRow selectedRow = gvCompanyList.Rows[(int)Session["selectedIndex"]];
                             selectedRow.Cells[2].Text = staNAME.Text;
-                            selectedRow.Cells[3].Text = staSEX.Text;
+                            selectedRow.Cells[3].Text = staSEX.SelectedValue;
                             selectedRow.Cells[4].Text = staAGE.Text;
                             selectedRow.Cells[5].Text = staPHONE.Text;
                             selectedRow.Cells[6].Text = staDEP.Text;
                             Session.Remove("selectedIndex");
                             staID.Text = "";
                             staNAME.Text = "";
-                            staSEX.Text = "";
+                            staSEX.SelectedValue = "F";
                             staAGE.Text = "";
                             staDEP.Text = "";
                             staPHONE.Text = "";
+                            standardTable();
                         }
                         catch (Exception) { }
                         // SweetAlert: http://lipis.github.io/bootstrap-sweetalert/
