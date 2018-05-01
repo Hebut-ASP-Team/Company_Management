@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sell.aspx.cs" Inherits="企业信息管理.sell" %>
-
+<!--Test!-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -17,7 +17,6 @@
 </head>
 <body class="sidebar-mini fixed">
   <div class="wrapper">
-    <!-- Navbar-->
     <header class="main-header hidden-print">
       <a class="logo" href="index.html">Vali</a>
       <nav class="navbar navbar-static-top">
@@ -138,6 +137,7 @@
         </ul>
       </section>
     </aside>
+    <form runat="server">
     <div class="content-wrapper">
       <div class="page-title">
         <div>
@@ -151,61 +151,128 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="card">
-            <h3 class="card-title">未完成作业</h3>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>标题</th>
-                  <th>截止时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>软件过程实验1</td>
-                  <td>2017-5-1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>简述软件过程</td>
-                  <td>2018-6-1</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>软件过程2</td>
-                  <td>2016-5-2</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="mt-40 mb-20">
-              <a class="btn btn-primary icon-btn mr-10"
-                href="./homework.html">
-                <i class="fa fa-file-text"></i>查看所有作业</a>
-              <a class="btn btn-info icon-btn mr-10">
-                <i class="fa fa-github"></i>GitHub</a>
-            </p>
+            <h3 class="card-title">销售列表</h3>
+              <asp:GridView
+                Font-Size="14px"
+                GridLines="None"
+                DataKeyNames="goods_id"
+                CssClass="table table-striped"
+                runat="server"
+                ID="gv_sell_list"
+                AutoGenerateColumns="false"
+                OnRowCommand="gv_sell_list_RowCommand"
+                OnRowSelect="gv_sell_list_RowSelect">
+                <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
+                <Columns>
+                  <asp:TemplateField HeaderText="销售商品ID" Visible="false">
+                    <ItemTemplate>
+                      <asp:Label runat="server" Text='<%Eval("goods_id") %>'></asp:Label>
+                    </ItemTemplate>
+                  </asp:TemplateField>
+                  <asp:TemplateField HeaderText="序号">
+                    <ItemTemplate>
+                      <%#Container.DataItemIndex+1 %>
+                    </ItemTemplate>
+                  </asp:TemplateField>
+                  <asp:BoundField DataField="goods_id" HeaderText="销售商品编号" ReadOnly="true" />
+                  <asp:BoundField DataField="goods_name" HeaderText="销售商品名称" ReadOnly="true" />
+                  <asp:BoundField DataField="goods_amount" HeaderText="剩余数量" ReadOnly="true" />
+                  <asp:TemplateField HeaderText="购买数量">
+                    <ItemTemplate>
+                      <!--<asp:Button runat="server"
+                        ID="sell" CommandName="Sell" CommandArgument="<% Eval('gooda_id')%>" Text="购买"
+                        OnClientClick="return confirm('确认订单?')" />-->
+                        <asp:TextBox runat="server" CssClass="form-control" ID="sellamount"></asp:TextBox>
+                    </ItemTemplate>
+                   
+                  <asp:ButtonField  HeaderText="确认" Text="购买" CommandName="XX" />
+                  </asp:TemplateField>
+                </Columns>
+                <RowStyle VerticalAlign ="Middle" />
+              </asp:GridView>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="card">
-            <h3 class="card-title">未读公告</h3>
-            <ul>
-              <li><a href="notice-detail.html">公告1</a></li>
-            </ul>
-            <a class="btn btn-success icon-btn mr-10" href="./notice.html">
-              <i class="fa fa-bullhorn"></i>所有公告</a>
+       </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <h3 class="card-title">总订单</h3>
+              <div class="card-body3">
+                <asp:Panel class="form-inline" runat="server">
+                  <asp:GridView
+                        Font-Size="12px"
+                        GridLines="None"
+                        DataKeyNames="goods_id"
+                        CssClass="table table-striped"
+                        runat="server"
+                        ID="good_temporary"
+                        AutoGenerateColumns="false">
+                        <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
+                        <Columns>
+                          <asp:TemplateField HeaderText="销售商品ID" Visible="false">
+                            <ItemTemplate>
+                              <asp:Label runat="server" Text='<%Eval("goods_id") %>'></asp:Label>
+                            </ItemTemplate>
+                          </asp:TemplateField>
+                          <asp:TemplateField HeaderText="序号">
+                            <ItemTemplate>
+                              <%#Container.DataItemIndex+1 %>
+                            </ItemTemplate>
+                          </asp:TemplateField>
+                          <asp:BoundField DataField="goods_id" HeaderText="销售商品编号" ReadOnly="true" />
+                          <asp:BoundField DataField="goods_name" HeaderText="销售商品名称" ReadOnly="true" />
+                          <asp:BoundField DataField="goods_amount" HeaderText="购买数量" ReadOnly="true" />
+                        </Columns>
+                        <RowStyle VerticalAlign ="Middle" />
+                  </asp:GridView>
+                  <div class="form-group">
+                    <button id="sellCommit" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>提交订单</button>
+                  </div>
+                </asp:Panel>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+     </form>
   </div>
   <!-- Javascripts-->
   <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript">$('#sampleTable').DataTable();</script>
+  <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+  <script type="text/javascript">
+    $('#<%=gv_sell_list.ClientID%>').DataTable({
+      language: {
+        "sProcessing": "处理中...",
+        "sLengthMenu": "显示 _MENU_ 项结果",
+        "sZeroRecords": "没有匹配结果",
+        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索:",
+        "sUrl": "",
+        "sEmptyTable": "表中数据为空",
+        "sLoadingRecords": "载入中...",
+        "sInfoThousands": ",",
+        "oPaginate": {
+          "sFirst": "首页",
+          "sPrevious": "上页",
+          "sNext": "下页",
+          "sLast": "末页"
+        },
+        "oAria": {
+          "sSortAscending": ": 以升序排列此列",
+          "sSortDescending": ": 以降序排列此列"
+        }
+      }
+    });</script>
 </body>
 </html>
