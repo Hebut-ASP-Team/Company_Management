@@ -9,65 +9,56 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace 企业信息管理
-{
-    public partial class sell : System.Web.UI.Page
-    {
+namespace 企业信息管理 {
+    public partial class sell : System.Web.UI.Page {
         string connectionStr = ConfigurationManager.ConnectionStrings["access"].ConnectionString;
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (Session["username"] == null)
-            {
+        private LinkedList<Goods> goodsList;
+        protected void Page_Load(object sender, EventArgs e) {
+            if (Session["username"] == null) {
                 Response.Redirect("login.aspx");
                 return;
             }
             username.Text = Session["nickname"] as string;
             comment.Text = Session["comment"] as string;
+            if(!IsPostBack) {
+                Session.Remove("list");
+            }
+            if (Session["list"] == null) {
+                goodsList = new LinkedList<Goods>();
+                Session["list"] = goodsList;
+            } else {
+                goodsList = Session["List"] as LinkedList<Goods>;
+            }
             showGoodsList();
         }
-        protected void showGoodsList()
-        {
-            if (!IsPostBack)
-            {
-                using (OleDbConnection conn = new OleDbConnection(connectionStr))
-                {
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select goods_id,goods_name,goods_amount from storage_goods", conn))
-                    {
+        protected void showGoodsList() {
+            if (!IsPostBack) {
+                using (OleDbConnection conn = new OleDbConnection(connectionStr)) {
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select goods_id,goods_name,goods_amount from storage_goods", conn)) {
                         DataSet ds = new DataSet();
                         adapter.Fill(ds);
                         gv_sell_list.DataSource = ds;
                         gv_sell_list.DataBind();
-                        if (gv_sell_list.Rows.Count > 0)
-                        {
-                            // 使用<TH>替换<TD>
-                            gv_sell_list.UseAccessibleHeader = true;
-                            //HeaderRow将被<thead>包裹，数据行将被<tbody>包裹
-                            gv_sell_list.HeaderRow.TableSection = TableRowSection.TableHeader;
-                            // FooterRow将被<tfoot>包裹
-                            gv_sell_list.FooterRow.TableSection = TableRowSection.TableFooter;
-                        }
+                        standardTable();
                     }
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from goods_temporary", conn))
-                    {
-                        DataSet ds = new DataSet();
-                        adapter.Fill(ds);
-                        good_temporary.DataSource = ds;
-                        good_temporary.DataBind();
-                        if (good_temporary.Rows.Count > 0)
-                        {
-                            // 使用<TH>替换<TD>
-                            good_temporary.UseAccessibleHeader = true;
-                            //HeaderRow将被<thead>包裹，数据行将被<tbody>包裹
-                            good_temporary.HeaderRow.TableSection = TableRowSection.TableHeader;
-                            // FooterRow将被<tfoot>包裹
-                            good_temporary.FooterRow.TableSection = TableRowSection.TableFooter;
-                        }
-                    }
+                    good_temporary.DataSource = goodsList;
+                    good_temporary.DataBind();
                 }
             }
         }
-        protected void gv_sell_list_RowSelect(object sender, GridViewDeleteEventArgs e)
-        {
+
+        private void standardTable() {
+            if (gv_sell_list.Rows.Count > 0) {
+                // 使用<TH>替换<TD>
+                gv_sell_list.UseAccessibleHeader = true;
+                //HeaderRow将被<thead>包裹，数据行将被<tbody>包裹
+                gv_sell_list.HeaderRow.TableSection = TableRowSection.TableHeader;
+                // FooterRow将被<tfoot>包裹
+                gv_sell_list.FooterRow.TableSection = TableRowSection.TableFooter;
+            }
+        }
+
+        protected void gv_sell_list_RowSelect(object sender, GridViewDeleteEventArgs e) {
             /*foreach (DictionaryEntry entry in e.Keys)
             {
                 Delete((int)entry.Value);
@@ -75,8 +66,7 @@ namespace 企业信息管理
             }*/
         }
 
-        protected void gv_sell_list_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
+        protected void gv_sell_list_RowCommand(object sender, GridViewCommandEventArgs e) {
             /*if (e.CommandName.Equals("XX"))
             {
                 int index = Convert.ToInt32(e.CommandArgument);
@@ -87,13 +77,35 @@ namespace 企业信息管理
                 standardTable();
             }*/
         }
-        protected void btnSell_Click(object sender, EventArgs e)
-        {
+        protected void btnSell_Click(object sender, EventArgs e) {
 
         }
-        protected void save(object sender, EventArgs e)
-        {
-            Response.Write("123");
+        // 在"购买数量"对话框中点击确认按钮
+        protected void btnOK_Click(object sender, EventArgs e) {
+            goodsList.AddLast(new Goods(Int32.Parse(goodsid.Text), goodsname.Text, Int32.Parse(buyAmount.Text)));
+            good_temporary.DataSource = goodsList;
+            good_temporary.DataBind();
+            standardTable();
         }
+
+        protected void btnSellCommit_Click(object sender, EventArgs e) {
+            // 所有数据都存储在List中了
+        }
+    }
+    public class Goods {
+        static int count = 0;
+        public int seq;        // 序号
+        public int id;         // 商品ID
+        public string name;    // 商品名称
+        public int num;      // 购买数量
+
+        public Goods(int id, string name, int num) {
+            this.seq = ++count;
+            this.id = id;
+            this.name = name;
+            this.num = num;
+        }
+
+        public Goods() { }
     }
 }
