@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sell.aspx.cs" Inherits="企业信息管理.sell" %>
+
 <!--Test!-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -98,8 +99,12 @@
               alt="User Image">
           </div>
           <div class="pull-left info">
-            <p><asp:Label runat="server" ID="username" Text="用户名"/></p>
-            <p class="designation"><asp:Label runat="server" ID="comment"/></p>
+            <p>
+              <asp:Label runat="server" ID="username" Text="用户名" />
+            </p>
+            <p class="designation">
+              <asp:Label runat="server" ID="comment" />
+            </p>
           </div>
         </div>
         <!-- 侧边菜单-->
@@ -138,22 +143,22 @@
       </section>
     </aside>
     <form runat="server">
-    <div class="content-wrapper">
-      <div class="page-title">
-        <div>
-          <h1><i class="fa fa-dashboard"></i>商品销售</h1>
+      <div class="content-wrapper">
+        <div class="page-title">
+          <div>
+            <h1><i class="fa fa-dashboard"></i>商品销售</h1>
+          </div>
+          <div>
+            <ul class="breadcrumb">
+              <li><i class="fa fa-home fa-lg"></i></li>
+              <li><a href="#">主页</a></li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <ul class="breadcrumb">
-            <li><i class="fa fa-home fa-lg"></i></li>
-            <li><a href="#">主页</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <h3 class="card-title">销售列表</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <h3 class="card-title">销售列表</h3>
               <asp:GridView
                 Font-Size="14px"
                 GridLines="None"
@@ -166,64 +171,63 @@
                 OnRowSelect="gv_sell_list_RowSelect">
                 <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
                 <Columns>
-                  <asp:TemplateField HeaderText="销售商品ID" Visible="false">
-                    <ItemTemplate>
-                      <asp:Label runat="server" Text='<%Eval("goods_id") %>'></asp:Label>
-                    </ItemTemplate>
-                  </asp:TemplateField>
                   <asp:TemplateField HeaderText="序号">
                     <ItemTemplate>
                       <%#Container.DataItemIndex+1 %>
                     </ItemTemplate>
                   </asp:TemplateField>
-                  <asp:BoundField DataField="goods_id" HeaderText="销售商品编号" ReadOnly="true" />
-                  <asp:BoundField DataField="goods_name" HeaderText="销售商品名称" ReadOnly="true" />
+                  <asp:BoundField DataField="goods_id" HeaderText="商品编号" ReadOnly="true" />
+                  <asp:BoundField DataField="goods_name" HeaderText="商品名称" ReadOnly="true" />
                   <asp:BoundField DataField="goods_amount" HeaderText="剩余数量" ReadOnly="true" />
                   <asp:TemplateField HeaderText="购买">
                     <ItemTemplate>
-                      <!--<asp:Button runat="server"
-                        ID="sell" CommandName="Sell" CommandArgument="<% Eval('gooda_id')%>" Text="购买"
-                        OnClientClick="return confirm('确认订单?')" />-->
-                       <div class=" add-task-row">
-                                  <!-- Button trigger modal -->
-                                  <button type="button" data-toggle="modal" data-target="#myModal0">
-                                  购买
-                                  </button>
-                                  <!-- Modal -->
-                                  <div class="modal fade" id="myModal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 class="modal-title" id="myModalLabel0">购买数量</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                          <h5>商品ID</h5>
-                                          <label id ="goodsid"></label>
-                                          <h5>商品名称</h5>
-                                          <label id ="goodsname"></label>
-                                          <h5>剩余数量</h5>
-                                          <label id ="goodsamount"></label>
-                                          <h5>购买数量</h5>
-                                          <input type="number" class="form-control" id ="goodsAmount">
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                          <button type="button" class="btn btn-success" onclick="save">确认</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <!--<a class="btn btn-default btn-sm pull-right" href="todo_list.html#">查看所有</a>-->
-                              </div>
+                      <div class=" add-task-row">
+                        <!-- Button trigger modal -->
+                        <button class="selectOfBuy" type="button" data-toggle="modal" data-target="#myModal0">
+                          购买
+                        </button>
+                      </div>
                     </ItemTemplate>
                   </asp:TemplateField>
                 </Columns>
-                <RowStyle VerticalAlign ="Middle" />
+                <RowStyle VerticalAlign="Middle" />
               </asp:GridView>
+            </div>
           </div>
         </div>
-       </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel0">购买数量</h4>
+              </div>
+              <div class="modal-body">
+                <h5>商品ID</h5>
+                <asp:TextBox CssClass="form-control" runat="server" ID="goodsid"></asp:TextBox>
+                <h5>商品名称</h5>
+                <asp:TextBox CssClass="form-control" runat="server" ID="goodsname"></asp:TextBox>
+                <h5>剩余数量</h5>
+                <asp:TextBox CssClass="form-control" runat="server" ID="goodsamount"></asp:TextBox>
+                <h5>购买数量</h5>
+                <asp:TextBox runat="server" type="number" class="form-control" ID="buyAmount" min="1" />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button id="queren" type="button" class="btn btn-success">确认</button>
+                <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Style="display: none" />
+                <script>document.getElementById("queren").addEventListener("click", function () {
+  document.getElementById("<%=btnOK.ClientID %>").click();
+});
+
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -231,33 +235,40 @@
               <div class="card-body3">
                 <asp:Panel class="form-inline" runat="server">
                   <asp:GridView
-                        Font-Size="12px"
-                        GridLines="None"
-                        DataKeyNames="goods_id"
-                        CssClass="table table-striped"
-                        runat="server"
-                        ID="good_temporary"
-                        AutoGenerateColumns="false">
-                        <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
-                        <Columns>
-                          <asp:TemplateField HeaderText="销售商品ID" Visible="false">
-                            <ItemTemplate>
-                              <asp:Label runat="server" Text='<%Eval("goods_id") %>'></asp:Label>
-                            </ItemTemplate>
-                          </asp:TemplateField>
-                          <asp:TemplateField HeaderText="序号">
-                            <ItemTemplate>
-                              <%#Container.DataItemIndex+1 %>
-                            </ItemTemplate>
-                          </asp:TemplateField>
-                          <asp:BoundField DataField="goods_id" HeaderText="销售商品编号" ReadOnly="true" />
-                          <asp:BoundField DataField="goods_name" HeaderText="销售商品名称" ReadOnly="true" />
-                          <asp:BoundField DataField="goods_amount" HeaderText="购买数量" ReadOnly="true" />
-                        </Columns>
-                        <RowStyle VerticalAlign ="Middle" />
+                    Font-Size="12px"
+                    GridLines="None"
+                    CssClass="table table-striped"
+                    runat="server"
+                    ID="good_temporary"
+                    AutoGenerateColumns="false">
+                    <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
+                    <Columns>
+                      <asp:TemplateField HeaderText="序号">
+                        <ItemTemplate>
+                          <%#((企业信息管理.Goods)(Container.DataItem)).seq%>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField HeaderText="商品编号">
+                        <ItemTemplate>
+                          <%#((企业信息管理.Goods)(Container.DataItem)).id%>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField HeaderText="名称">
+                        <ItemTemplate>
+                          <%#((企业信息管理.Goods)(Container.DataItem)).name%>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField HeaderText="购买数量">
+                        <ItemTemplate>
+                          <%#((企业信息管理.Goods)(Container.DataItem)).num%>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                    </Columns>
+                    <RowStyle VerticalAlign="Middle" />
                   </asp:GridView>
                   <div class="form-group">
                     <button id="sellCommit" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>提交订单</button>
+                    <asp:Button ID="btnSellCommit" style="display:none" runat="server" OnClick="btnSellCommit_Click" />
                   </div>
                 </asp:Panel>
               </div>
@@ -265,7 +276,7 @@
           </div>
         </div>
       </div>
-     </form>
+    </form>
   </div>
   <!-- Javascripts-->
   <script src="js/jquery-2.1.4.min.js"></script>
@@ -303,10 +314,23 @@
         }
       }
     });</script>
-</body>
-</html>
-
-      }
-    });</script>
+  <script>
+    $('.selectOfBuy').click(function () {
+      var clickRow = $(this).parents("tr")[0];
+      var cells = clickRow.cells;
+      // 商品ID
+      $("#<%=goodsid.ClientID %>").attr("value", cells[1].innerText);
+      // 商品名称
+      $("#<%=goodsname.ClientID %>").attr("value", cells[2].innerText);
+      // 商品数量
+      $("#<%=goodsamount.ClientID %>").attr("value", cells[3].innerText);
+      // 最大数量
+      $("#<%=buyAmount.ClientID%>").attr("max", cells[3].innerText);
+      $("#<%=buyAmount.ClientID%>").attr("value", "1");
+    });
+    $('#sellCommit').click(function () {
+      $('#<%=btnSellCommit.ClientID%>').click();
+    });
+  </script>
 </body>
 </html>
