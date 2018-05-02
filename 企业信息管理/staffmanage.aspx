@@ -171,13 +171,8 @@
                 <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
                 <Columns>
                  <asp:BoundField DataField="sta_id" HeaderText="员工ID"></asp:BoundField>
-                  <asp:TemplateField HeaderText="序号">
-                    <ItemTemplate>
-                      <%#Container.DataItemIndex+1 %>
-                    </ItemTemplate>
-                  </asp:TemplateField>
                   <asp:BoundField DataField="sta_name" HeaderText="姓名" ReadOnly="true" />
-                  <asp:BoundField DataField="sta_sexC" HeaderText="性别" ReadOnly="true" />
+                  <asp:BoundField DataField="sta_sex" HeaderText="性别" ReadOnly="true" />
                   <asp:BoundField DataField="sta_age" HeaderText="年龄" ReadOnly="true" />
                   <asp:BoundField DataField="sta_phone" HeaderText="联系方式" ReadOnly="true" />
                   <asp:BoundField DataField="dep_name" HeaderText="部门" ReadOnly="true" />
@@ -211,8 +206,8 @@
                     <div class="form-group">
                     <label class="control-label">性别</label>
                     <asp:DropDownList ID="staSEX" CssClass="form-control" runat="server" style="margin-left: 10px;margin-right: 40px;">
-                        <asp:ListItem Text="男" Value="F"></asp:ListItem>
-                        <asp:ListItem Text="女" Value="M"></asp:ListItem>
+                        <asp:ListItem Text="男" Value="男"></asp:ListItem>
+                        <asp:ListItem Text="女" Value="女"></asp:ListItem>
                       </asp:DropDownList>
                     </div>
                 </asp:Panel>
