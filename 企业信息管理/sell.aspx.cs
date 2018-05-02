@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 namespace 企业信息管理 {
     public partial class sell : System.Web.UI.Page {
@@ -90,6 +91,20 @@ namespace 企业信息管理 {
 
         protected void btnSellCommit_Click(object sender, EventArgs e) {
             // 所有数据都存储在List中了
+            string sqldb
+                    = ConfigurationManager.ConnectionStrings["Sqlsever"].ConnectionString;
+            SqlConnection MyCon = new SqlConnection(sqldb);
+            MyCon.Open();
+            int i = 0;
+            while(i < goodsList.Count)
+            {
+                SqlCommand comm = new SqlCommand("update storage_goods SET goods_amount = goods_amount - " + goodsList.ElementAt(i).num + "WHERE goods_id = "+ goodsList.ElementAt(i).id,MyCon);
+                comm.ExecuteNonQuery();
+                i++;
+            }
+            Session["list"] = null;
+           // showGoodsList();
+            Response.Redirect("sell.aspx");
         }
     }
     public class Goods {
