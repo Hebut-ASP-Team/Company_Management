@@ -166,15 +166,33 @@
               <div class="card-body">
                 <div class="form-group">
                   <asp:Label ID="purID" runat="server" Text="采购ID"></asp:Label>
-                  <asp:TextBox runat="server" ID="tbPurchaseID" CssClass="form-control" />
-                  <asp:Label ID="purStatus" runat="server" Text="采购状态"></asp:Label>
+                  <asp:TextBox runat="server" ID="tbPurchaseID" CssClass="form-control" Enabled="false" />
+
+                  <asp:Label ID="purdetID" runat="server" Text="采购明细ID"></asp:Label>
+                  <asp:TextBox runat="server" ID="tbPurchaseDetID" CssClass="form-control" Enabled="false"/>
+
+                  <asp:Label ID="goodsName" runat="server" Text="商品"></asp:Label>
+                  <asp:DropDownList ID="good_Name" runat="server" CssClass="form-control" DataSourceID="SqlDataSource1" DataTextField="goods_name" DataValueField="goods_name"></asp:DropDownList>
+                 
+                  <asp:Label ID="purAmount" runat="server" Text="数量"></asp:Label>
+                  <asp:TextBox runat="server" ID="tbAmount" CssClass="form-control"/>
+
+                  <asp:Label ID="purMoney" runat="server" Text="单价"></asp:Label>
+                  <asp:TextBox runat="server" ID="tbMoney" CssClass="form-control"/>
+
+                  <asp:Label ID="purSupplier" runat="server" Text="供应商"></asp:Label>
+                  <asp:DropDownList ID="dropSupplier" runat="server" CssClass="form-control" DataSourceID="SqlDataSource2" DataTextField="sup_name" DataValueField="sup_name"></asp:DropDownList>
+
+                    <%-- <asp:Label ID="purStatus" runat="server" Text="采购状态"></asp:Label>
                   <asp:TextBox ID="tbPurchaseStatus" runat="server" CssClass="form-control"></asp:TextBox>
                   <asp:Label ID="purMoney" runat="server" Text="采购金额"></asp:Label>
                   <asp:TextBox ID="tbPurchaseMoney" runat="server" CssClass="form-control"></asp:TextBox>
                   <asp:Label ID="purStaff" runat="server" Text="采购人员"></asp:Label>
                   <asp:TextBox ID="tbPurchaseStaff" runat="server" CssClass="form-control"></asp:TextBox>
                   <asp:Label ID="purTime" runat="server" Text="采购时间"></asp:Label>
-                  <asp:TextBox ID="tbPurchaseTime" runat="server" CssClass="form-control"></asp:TextBox>
+                  <asp:TextBox ID="tbPurchaseTime" runat="server" CssClass="form-control"></asp:TextBox>--%>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:SIODataBaseConnectionString %>' SelectCommand="SELECT [sup_name] FROM [supplier]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:SIODataBaseConnectionString %>' SelectCommand="SELECT [goods_name] FROM [storage_goods]"></asp:SqlDataSource>
                 </div>
               </div>
               <div class="card-footer">
@@ -184,10 +202,10 @@
                 <asp:Button runat="server" style="display:none" ID="btnCommit" OnClick="btnCommit_Click" />
                 <script>
                   document.getElementById("btn_commit").addEventListener("click", function () {
-                    if ($("#<%=tbPurchaseID.ClientID %>").val().length > 0) {
+                    if ($("#<%=tbAmount.ClientID %>").val().length > 0) {
                       document.getElementById("<%=btnCommit.ClientID %>").click();
                     } else {
-                      swal("请输入供应商名称", "", "error");
+                      swal("请输入购买数量", "", "error");
                     }
                   });
                 </script>

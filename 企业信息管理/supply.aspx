@@ -160,7 +160,7 @@
          <div class="card">
           <div class="card-title-w-btn">
              <h3 class="card-title">采购信息列表</h3>
-                <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i>添加</a></p>
+                <p><a class="btn btn-primary icon-btn" href="addpurchaselist.aspx"><i class="fa fa-plus"></i>添加</a></p>
             </div>
           
               <form runat="server">
@@ -243,7 +243,7 @@
       </div>
     </div>
   
-  <!-- Javascripts-->
+ <!-- Javascripts-->
   <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
@@ -279,7 +279,7 @@
       }
     });</script>
   <script>
-    $("#change").click(function () {
+    $("#change_purchase").click(function () {
       if ($("#<%=tbPurID.ClientID %>").val().length > 0) {
         document.getElementById("<%=btnUpdate.ClientID %>").click();
       } else {

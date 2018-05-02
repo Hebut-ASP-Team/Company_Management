@@ -66,17 +66,25 @@ namespace 企业信息管理 {
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("delete from purchase_detail where pur_id=" + purId, conn))
-                {
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+               
                 using (OleDbCommand cmd = new OleDbCommand("delete from purchase where pur_id=" + purId, conn))
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+        protected void DeleteDetail(int pur_id)
+        {
+            using (OleDbConnection conn = new OleDbConnection(connectionStr))
+            {
+                using (OleDbCommand cmd = new OleDbCommand("delete from purchase_detail where pur_id=" + pur_id, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
         }
 
         /// <summary>
@@ -88,7 +96,9 @@ namespace 企业信息管理 {
         {
             foreach (DictionaryEntry entry in e.Keys)
             {
+                DeleteDetail((int)entry.Value);
                 Delete((int)entry.Value);
+
                 purchase_list.Rows[e.RowIndex].Visible = false;
             }
         }
@@ -152,7 +162,7 @@ namespace 企业信息管理 {
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (Session["selectedIndex"] == null) return;
+           // if (Session["selectedIndex"] == null) return;
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
                 using (OleDbCommand cmd = new OleDbCommand("update purchase set pur_status ="+tbPurStatus.Text + "where pur_id=" + tbPurID.Text, conn))
