@@ -102,7 +102,7 @@ namespace 企业信息管理
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmmd = new OleDbCommand("INSERT INTO purchase_detail(pur_id, purdet_id, goods_id, purdet_amount, purdet_money, purdet_supplier)VALUES(" + pur_id + "," + purdet_id + "," + goods_id + "," + amount + ",'" + money + "','" + supplier + "'" + ")", conn))
+                using (OleDbCommand cmmd = new OleDbCommand("INSERT INTO purchase_detail(purdet_id, pur_id, goods_id, purdet_amount, purdet_money, purdet_supplier)VALUES(" + purdet_id + "," + pur_id + "," + goods_id + "," + amount + ",'" + money + "','" + supplier + "'" + ")", conn))
                 {
                     int totalmoney = amount * Convert.ToInt32(money);
                     string sta_id = getStaID(username.Text);
