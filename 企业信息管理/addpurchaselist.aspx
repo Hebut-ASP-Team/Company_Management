@@ -187,7 +187,6 @@
                   <asp:TextBox ID="tbPurchaseStatus" runat="server" CssClass="form-control"></asp:TextBox>
                   <asp:Label ID="purMoney" runat="server" Text="采购金额"></asp:Label>
                   <asp:TextBox ID="tbPurchaseMoney" runat="server" CssClass="form-control"></asp:TextBox>
-                  <asp:Label ID="purStaff" runat="server" Text="采购人员"></asp:Label>
                   <asp:TextBox ID="tbPurchaseStaff" runat="server" CssClass="form-control"></asp:TextBox>
                   <asp:Label ID="purTime" runat="server" Text="采购时间"></asp:Label>
                   <asp:TextBox ID="tbPurchaseTime" runat="server" CssClass="form-control"></asp:TextBox>--%>
