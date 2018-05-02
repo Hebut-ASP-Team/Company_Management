@@ -12,6 +12,7 @@ namespace 企业信息管理
     public partial class addpurchaselist : System.Web.UI.Page
     {
         string connectionStr = ConfigurationManager.ConnectionStrings["access"].ConnectionString;
+        //记录明细ID
         int purchase_detail_id = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,7 +28,7 @@ namespace 企业信息管理
                 using (OleDbCommand cmd = new OleDbCommand("SELECT MAX(pur_id) FROM purchase", conn))
                 {
                     conn.Open();
-                    int pur_id = (int)cmd.ExecuteScalar()+1;
+                    int pur_id = (int)cmd.ExecuteScalar()+1;//采购ID为purchase表最大ID+1
                     tbPurchaseID.Text = pur_id.ToString();
                     tbPurchaseDetID.Text = purchase_detail_id.ToString();
                 }
@@ -36,7 +37,7 @@ namespace 企业信息管理
         }
 
         /// <summary>
-        ///
+        ///  提交按钮
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -50,6 +51,12 @@ namespace 企业信息管理
 
 
         }
+
+        /// <summary>
+        /// 根据用户选择的商品名称获取商品ID
+        /// </summary>
+        /// <param name="goods_name"></param>
+        /// <returns></returns>
         public int getGoodsID(string goods_name)
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
@@ -62,6 +69,11 @@ namespace 企业信息管理
                 }
             }
         }
+        /// <summary>
+        /// 根据供应商名称获得供应商ID
+        /// </summary>
+        /// <param name="supplier_name"></param>
+        /// <returns></returns>
         public int getSupplierID(string supplier_name)
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
@@ -75,11 +87,22 @@ namespace 企业信息管理
             }
 
         }
+
+
+        /// <summary>
+        ///当前用户选择的信息记录 插入purchase_detail
+        /// </summary>
+        /// <param name="pur_id"></param>
+        /// <param name="purdet_id"></param>
+        /// <param name="goods_id"></param>
+        /// <param name="amount"></param>
+        /// <param name="money"></param>
+        /// <param name="supplier"></param>
         public void insertPurchaseDetail(int pur_id, int purdet_id, int goods_id, int amount, string money, string supplier)
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmmd = new OleDbCommand("INSERT INTO purchase_detail(pur_id, purdet_id, goods_id, purdet_amount, purdet_money, purdet_supplier)VALUES(" + purdet_id + "," + pur_id + "," + goods_id + "," + amount + ",'" + money + "','" + supplier + "'" + ")", conn))
+                using (OleDbCommand cmmd = new OleDbCommand("INSERT INTO purchase_detail(pur_id, purdet_id, goods_id, purdet_amount, purdet_money, purdet_supplier)VALUES(" + pur_id + "," + purdet_id + "," + goods_id + "," + amount + ",'" + money + "','" + supplier + "'" + ")", conn))
                 {
                     int totalmoney = amount * Convert.ToInt32(money);
                     string sta_id = getStaID(username.Text);
@@ -113,6 +136,12 @@ namespace 企业信息管理
             }
         }
 
+        /// <summary>
+        /// 插入purchase表
+        /// </summary>
+        /// <param name="pur_id"></param>
+        /// <param name="totalmoney"></param>
+        /// <param name="sta_id"></param>
         public void insertPurchase(int pur_id, string totalmoney, string sta_id)
         {
             string time = DateTime.Now.ToShortDateString().ToString();
@@ -125,6 +154,12 @@ namespace 企业信息管理
                 }
             }
         }
+
+        /// <summary>
+        /// 更新purchase表
+        /// </summary>
+        /// <param name="pur_id"></param>
+        /// <param name="totalmoney"></param>
         public void updatePurchase(int pur_id,string totalmoney)
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
@@ -137,6 +172,11 @@ namespace 企业信息管理
             }
         }
 
+        /// <summary>
+        /// 根据登录名获得登录员工的id
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public string getStaID(string name)
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))

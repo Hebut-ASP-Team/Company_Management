@@ -192,7 +192,7 @@
                   <asp:Label ID="purTime" runat="server" Text="采购时间"></asp:Label>
                   <asp:TextBox ID="tbPurchaseTime" runat="server" CssClass="form-control"></asp:TextBox>--%>
                     <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:SIODataBaseConnectionString %>' SelectCommand="SELECT [sup_name] FROM [supplier]"></asp:SqlDataSource>
-                    <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:SIODataBaseConnectionString %>' SelectCommand="SELECT [goods_name] FROM [storage_goods]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:SIODataBaseConnectionString2 %>' SelectCommand="SELECT [goods_name] FROM [storage_goods]"></asp:SqlDataSource>
                 </div>
               </div>
               <div class="card-footer">
