@@ -114,7 +114,7 @@ namespace 企业信息管理
 
                         // SweetAlert: http://lipis.github.io/bootstrap-sweetalert/
 
-                         Response.Write("<script>$(document).ready(function(){swal({title:\"添加成功\", type:\"success\"}, function(){window.location.href=\"supply.aspx\";})})</script>");
+                         Response.Write("<script>$(document).ready(function(){swal({title:\"添加成功\", type:\"success\"}, function(){window.location.href=\"addpurchaselist.aspx\";})})</script>");
                          if(purchase_detail_id==1)
                         {
                             

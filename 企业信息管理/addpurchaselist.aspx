@@ -195,7 +195,7 @@
                 </div>
               </div>
               <div class="card-footer">
-                <button id="btn_commit" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>添加</button>
+                <button id="btn_commit" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>添加明细</button>
                 &nbsp;&nbsp;&nbsp;
                 <a class="btn btn-default icon-btn" href="supply.aspx"><i class="fa fa-fw fa-lg fa-times-circle"></i>取消</a>
                 <asp:Button runat="server" style="display:none" ID="btnCommit" OnClick="btnCommit_Click" />
