@@ -112,31 +112,31 @@
         <ul class="sidebar-menu">
           <li>
             <a href="sell.aspx">
-              <i class="fa fa-dashboard"></i>
+              <i class="fa fa-cart-arrow-down"></i>
               <span>商品销售</span>
             </a>
           </li>
           <li class="active">
             <a href="supply.aspx">
-              <i class="fa fa-file-text"></i>
+              <i class="fa fa-truck"></i>
               <span>商品进货及查询</span>
             </a>
           </li>
           <li>
             <a href="stock.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-bank"></i>
               <span>库存管理</span>
             </a>
           </li>
           <li>
             <a href="suppliers.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-vcard-o"></i>
               <span>供应商管理</span>
             </a>
           </li>
           <li>
             <a href="staffmanage.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-address-book"></i>
               <span>员工信息管理</span>
             </a>
           </li>
@@ -146,7 +146,7 @@
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>商品进货及查询</h1>
+          <h1><i class="fa fa-truck"></i>商品进货及查询</h1>
         </div>
         <div>
           <ul class="breadcrumb">
@@ -160,7 +160,7 @@
          <div class="card">
           <div class="card-title-w-btn">
              <h3 class="card-title">采购信息列表</h3>
-                <p><a class="btn btn-primary icon-btn" href="addpurchaselist.aspx"><i class="fa fa-plus"></i>添加</a></p>
+                <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i>添加</a></p>
             </div>
           
               <form runat="server">
@@ -172,7 +172,7 @@
                       AutoGenerateColumns="False" 
                       DataKeyNames="pur_id" 
                       GridLines="None"
-                      OnRowDeleting="purchase_list_RowDeleting" OnRowCommand="purchase_list_RowCommand">
+                      OnRowDeleting="purchase_list_RowDeleting">
                        <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
                       <Columns>
                               <asp:BoundField DataField="pur_id" HeaderText="采购ID" />
@@ -180,113 +180,33 @@
                               <asp:BoundField DataField="pur_money" HeaderText="采购金额" />
                               <asp:BoundField DataField="sta_id" HeaderText="采购人员ID" />
                               <asp:BoundField DataField="pur_creat_time" HeaderText="采购时间" /> 
-                              <asp:ButtonField HeaderText="查看" Text="查看" CommandName="detail" />
-                              <asp:ButtonField HeaderText="修改" Text="修改" CommandName="change" />
+                              
+                              
                               <asp:TemplateField HeaderText="删除">
                                  <ItemTemplate>
                                     <asp:Button runat="server"
                            ID="delete" CommandName="Delete" CommandArgument="<% Eval('pur_id')%>" Text="删除"
-                         OnClientClick="return confirm('你确定删除吗,删除将一并删除明细数据?')" />
+                         OnClientClick="return confirm('你确定删除吗?')" />
                                 </ItemTemplate>
                              </asp:TemplateField>
                       </Columns>
                   </asp:GridView>
-                  <h3 class="card-title">采购信息列表</h3>
-                  <asp:GridView 
-                      ID="purchase_detail_list"
-                      runat="server"  
-                      CssClass="table table-striped"
-                     
-                      AutoGenerateColumns="False" 
-                      DataKeyNames="pur_id" 
-                      GridLines="None">
-                      <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
-                      <Columns>
-                              <asp:BoundField DataField="purdet_id" HeaderText="采购明细ID" />
-                              <asp:BoundField DataField="pur_id" HeaderText="采购ID" />
-                              <asp:BoundField DataField="goods_id" HeaderText="商品ID" />
-                              <asp:BoundField DataField="purdet_amount" HeaderText="商品数量" />
-                              <asp:BoundField DataField="purdet_money" HeaderText="商品单价" />
-                              <asp:BoundField DataField="purdet_supplier" HeaderText="供应商" /> 
-                     </Columns>
-                  </asp:GridView>
 
-                    <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <h3 class="card-title">修改订单状态</h3>
-              <div class="card-body3">
-
-              <asp:Panel class="form_inline" ID="Panel1" runat="server" >
-                  <div class="form_group" runat="server">
-                    <label class="control-label">ID</label>
-                    <asp:TextBox Enabled="false" runat="server" CssClass="form-control" ID="tbPurID" />
-                  </div>
-                  <div class="form-group" runat="server">
-                     <label class="control-label">状态</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="tbPurStatus" />
-                  </div>
-                  <div class="form-group">
-                    <button id="change_purchase" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>修改</button>
-                    <asp:Button runat="server" ID="btnUpdate" OnClick="btnUpdate_Click" Style="display: none" />
-                  </div>
-              </asp:Panel>
-              </div>
-            </div>
-          </div>
-        </div>
               </form>
              </div>
           </div>
         </div>
-    
       </div>
     </div>
   
- <!-- Javascripts-->
+  <!-- Javascripts-->
   <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
-  <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+   <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
-  <script type="text/javascript">
-    $('#<%=purchase_list.ClientID%>').DataTable({
-      language: {
-        "sProcessing": "处理中...",
-        "sLengthMenu": "显示 _MENU_ 项结果",
-        "sZeroRecords": "没有匹配结果",
-        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-        "sInfoPostFix": "",
-        "sSearch": "搜索:",
-        "sUrl": "",
-        "sEmptyTable": "表中数据为空",
-        "sLoadingRecords": "载入中...",
-        "sInfoThousands": ",",
-        "oPaginate": {
-          "sFirst": "首页",
-          "sPrevious": "上页",
-          "sNext": "下页",
-          "sLast": "末页"
-        },
-        "oAria": {
-          "sSortAscending": ": 以升序排列此列",
-          "sSortDescending": ": 以降序排列此列"
-        }
-      }
-    });</script>
-  <script>
-    $("#change_purchase").click(function () {
-      if ($("#<%=tbPurID.ClientID %>").val().length > 0) {
-        document.getElementById("<%=btnUpdate.ClientID %>").click();
-      } else {
-        swal("请先选择一条数据", "", "error");
-      }
-    });
-  </script>
+  <script type="text/javascript">$('#<%=purchase_list.ClientID %>').DataTable();</script>
 </body>
 </html>
 

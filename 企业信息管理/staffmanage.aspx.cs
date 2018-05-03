@@ -22,16 +22,6 @@ namespace 企业信息管理 {
             username.Text = Session["nickname"] as string;
             comment.Text = Session["comment"] as string;
             showStaffList();
-            using (OleDbConnection conn = new OleDbConnection(connectionStr)) {
-                using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from department", conn)) {
-                    DataSet dataset = new DataSet();
-                    adapter.Fill(dataset);
-                    dropDEP.DataSource = dataset;
-                    dropDEP.DataTextField = "dep_name";
-                    dropDEP.DataValueField = "dep_id";
-                    dropDEP.DataBind();
-                }
-            }
         }
 
         protected void showStaffList() {
@@ -73,12 +63,7 @@ namespace 企业信息管理 {
                 staSEX.SelectedIndex = (selectedRow.Cells[2].Text.Equals("男")) ? 0 : 1;
                 staAGE.Text = selectedRow.Cells[3].Text;
                 staPHONE.Text = selectedRow.Cells[4].Text;
-                for (int i = 0; i < dropDEP.Items.Count; i++) {
-                    if (dropDEP.Items[i].Text.Equals(selectedRow.Cells[5].Text)) {
-                        dropDEP.SelectedIndex = i;
-                        break;
-                    }
-                }
+                staDEP.Text = selectedRow.Cells[5].Text;
                 standardTable();
             }
         }
@@ -89,7 +74,11 @@ namespace 企业信息管理 {
                     = ConfigurationManager.ConnectionStrings["Sqlsever"].ConnectionString;
             SqlConnection MyCon_hyh = new SqlConnection(sqldb);
             MyCon_hyh.Open();
+            SqlCommand cmd_hyh = new SqlCommand("select * from department where dep_name='" + staDEP.Text + "'", MyCon_hyh);
+            SqlDataReader dr_hyh = cmd_hyh.ExecuteReader();
             int dep_id = 0;
+            if (dr_hyh.Read())
+                dep_id = Convert.ToInt32(dr_hyh["dep_id"].ToString());
             using (OleDbConnection conn = new OleDbConnection(connectionStr)) {
                 using (OleDbCommand cmd = new OleDbCommand("update staff set sta_name='" + staNAME.Text + "',sta_sex='" + (staSEX.SelectedIndex == 0 ? "男" : "女") + "',sta_age=" + staAGE.Text + ",sta_phone='" + staPHONE.Text + "',dep_id=" + dep_id + "  where sta_id='" + staID.Text + "'", conn)) {
                     conn.Open();
@@ -102,13 +91,13 @@ namespace 企业信息管理 {
                             selectedRow.Cells[2].Text = staSEX.SelectedValue;
                             selectedRow.Cells[3].Text = staAGE.Text;
                             selectedRow.Cells[4].Text = staPHONE.Text;
-                            selectedRow.Cells[5].Text = dropDEP.Items[dropDEP.SelectedIndex].Text;
+                            selectedRow.Cells[5].Text = staDEP.Text;
                             Session.Remove("selectedIndex");
                             staID.Text = "";
                             staNAME.Text = "";
                             staSEX.SelectedIndex = 0;
                             staAGE.Text = "";
-                            dropDEP.SelectedIndex = 0;
+                            staDEP.Text = "";
                             staPHONE.Text = "";
                             standardTable();
                         } catch (Exception) { }

@@ -49,58 +49,22 @@ namespace 企业信息管理 {
         protected global::System.Web.UI.WebControls.TextBox tbPurchaseID;
         
         /// <summary>
-        /// purdetID 控件。
+        /// purStatus 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label purdetID;
+        protected global::System.Web.UI.WebControls.Label purStatus;
         
         /// <summary>
-        /// tbPurchaseDetID 控件。
+        /// tbPurchaseStatus 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbPurchaseDetID;
-        
-        /// <summary>
-        /// goodsName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label goodsName;
-        
-        /// <summary>
-        /// good_Name 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList good_Name;
-        
-        /// <summary>
-        /// purAmount 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label purAmount;
-        
-        /// <summary>
-        /// tbAmount 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbAmount;
+        protected global::System.Web.UI.WebControls.TextBox tbPurchaseStatus;
         
         /// <summary>
         /// purMoney 控件。
@@ -112,49 +76,49 @@ namespace 企业信息管理 {
         protected global::System.Web.UI.WebControls.Label purMoney;
         
         /// <summary>
-        /// tbMoney 控件。
+        /// tbPurchaseMoney 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbMoney;
+        protected global::System.Web.UI.WebControls.TextBox tbPurchaseMoney;
         
         /// <summary>
-        /// purSupplier 控件。
+        /// purStaff 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label purSupplier;
+        protected global::System.Web.UI.WebControls.Label purStaff;
         
         /// <summary>
-        /// dropSupplier 控件。
+        /// tbPurchaseStaff 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropSupplier;
+        protected global::System.Web.UI.WebControls.TextBox tbPurchaseStaff;
         
         /// <summary>
-        /// SqlDataSource2 控件。
+        /// purTime 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        protected global::System.Web.UI.WebControls.Label purTime;
         
         /// <summary>
-        /// SqlDataSource1 控件。
+        /// tbPurchaseTime 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.TextBox tbPurchaseTime;
         
         /// <summary>
         /// btnCommit 控件。
