@@ -222,7 +222,7 @@
                   </div>
                     <div class="form-group">
                     <label class="control-label">部门</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="staDEP" style="margin-left: 10px;margin-right: 40px;"></asp:TextBox>
+                    <asp:DropDownList runat="server" CssClass="form-control" ID="dropDEP" style="margin-left: 10px;margin-right: 40px;"></asp:DropDownList>
                   </div>
                 </asp:Panel>
                   <div class="form-group"  style="float:right;margin-top:14px;">
