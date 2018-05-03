@@ -102,7 +102,7 @@ namespace 企业信息管理 {
                 comm.ExecuteNonQuery();
                 i++;
             }
-            Session["list"] = null;
+            Session["list"] = null;  
            // showGoodsList();
             Response.Redirect("sell.aspx");
         }
