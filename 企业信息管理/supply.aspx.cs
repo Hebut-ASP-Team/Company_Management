@@ -8,13 +8,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+/// <summary>
+/// 企业信息管理 采购以及查询
+/// </summary>
 namespace 企业信息管理 {
     public partial class supply : System.Web.UI.Page
     {
-
+        //连接字符串
         string connectionStr = ConfigurationManager.ConnectionStrings["access"].ConnectionString;
-
+        /// <summary>
+        /// 页面加载函数 
+        /// 如果用户没有登录则返回登录 页面，已经登录显示采购单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] == null)
@@ -24,6 +31,7 @@ namespace 企业信息管理 {
             }
             username.Text = Session["nickname"] as string;
             comment.Text = Session["comment"] as string;
+            //显示采购单
             showPurchaseList();
         }
 
@@ -105,8 +113,15 @@ namespace 企业信息管理 {
                     }             
             }
         }
+
+        /// <summary>
+        /// GridView 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void purchase_list_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            //“查看”按钮
             if (e.CommandName.Equals("detail"))
             {
                 int index = Convert.ToInt32(e.CommandArgument);
@@ -114,7 +129,9 @@ namespace 企业信息管理 {
                 int pur_id = Convert.ToInt32(selectedRow.Cells[0].Text);
                 showPurchaseDetailList(pur_id);
                 standardTable();
-            } else if(e.CommandName.Equals("change")) {
+            }
+            //“修改”按钮
+            else if(e.CommandName.Equals("change")) {
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow selectedRow = purchase_list.Rows[index];
                 Session["selectedIndex"] = index;
@@ -125,7 +142,9 @@ namespace 企业信息管理 {
             }
         }
 
-        // 修改属性, 生成带有thead和tfoot的标准table
+        /// <summary>
+        /// 修改属性, 生成带有thead和tfoot的标准table
+        /// </summary> 
         private void standardTable()
         {
             if (purchase_list.Rows.Count > 0)
@@ -138,6 +157,12 @@ namespace 企业信息管理 {
                 purchase_list.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
+
+        /// <summary>
+        /// 修改状态时“确定”按钮的事件处理函数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         protected void btnUpdate_Click(object sender, EventArgs e) {
             if (Session["selectedIndex"] == null) return;

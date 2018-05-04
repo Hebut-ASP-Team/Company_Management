@@ -6,14 +6,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+/// <summary>
+/// 添加采购申请
+/// </summary>
 namespace 企业信息管理
 {
     public partial class addpurchaselist : System.Web.UI.Page
     {
+        //连接字符串
         string connectionStr = ConfigurationManager.ConnectionStrings["access"].ConnectionString;
         //记录明细ID
         int purchase_detail_id = 1;
+
+        /// <summary>
+        /// 页面加载函数，判断用户是否已经登录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] == null)
@@ -23,6 +32,8 @@ namespace 企业信息管理
             }
             username.Text = Session["nickname"] as string;
             comment.Text = Session["comment"] as string;
+
+            //返回采购ID和采购明细ID
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
                 using (OleDbCommand cmd = new OleDbCommand("SELECT MAX(pur_id) FROM purchase", conn))
@@ -37,19 +48,16 @@ namespace 企业信息管理
         }
 
         /// <summary>
-        ///  提交按钮
+        ///  提交按钮事件处理函数
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         protected void btnCommit_Click(object sender, EventArgs e)
         {
-            
+            //根据用户选择的商品名称查询商品表获得商品ID
             int goods_id = getGoodsID(good_Name.SelectedItem.Text);
-            //int supplier_id=getSupplierID(dropSupplier.SelectedItem.Text);
+            //插入采购明细表
             insertPurchaseDetail(Convert.ToInt32(tbPurchaseID.Text), Convert.ToInt32(tbPurchaseDetID.Text),goods_id, Convert.ToInt32(tbAmount.Text),tbMoney.Text,dropSupplier.SelectedValue.ToString());
-
-
         }
 
         /// <summary>
@@ -69,6 +77,8 @@ namespace 企业信息管理
                 }
             }
         }
+
+
         /// <summary>
         /// 根据供应商名称获得供应商ID
         /// </summary>
@@ -87,7 +97,6 @@ namespace 企业信息管理
             }
 
         }
-
 
         /// <summary>
         ///当前用户选择的信息记录 插入purchase_detail
@@ -124,8 +133,9 @@ namespace 企业信息管理
                         {
                             updatePurchase(pur_id, money.ToString());
                         }
-                         purchase_detail_id++;
-                         tbPurchaseDetID.Text = purchase_detail_id.ToString();
+                        //插入成功后更新插入页面的数据
+                        purchase_detail_id++;
+                        tbPurchaseDetID.Text = purchase_detail_id.ToString();
                         tbAmount.Text = "";
                         tbMoney.Text = "";
                         
@@ -190,7 +200,6 @@ namespace 企业信息管理
             }
            
         }
-
         private void outputBasicJavascriptLib()
         {
             Response.Write("<script src=\"js/jquery-2.1.4.min.js\"></script>\n");

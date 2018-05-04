@@ -183,14 +183,6 @@
                   <asp:Label ID="purSupplier" runat="server" Text="供应商"></asp:Label>
                   <asp:DropDownList ID="dropSupplier" runat="server" CssClass="form-control" DataSourceID="SqlDataSource2" DataTextField="sup_name" DataValueField="sup_name"></asp:DropDownList>
 
-                  <%-- <asp:Label ID="purStatus" runat="server" Text="采购状态"></asp:Label>
-                  <asp:TextBox ID="tbPurchaseStatus" runat="server" CssClass="form-control"></asp:TextBox>
-                  <asp:Label ID="purMoney" runat="server" Text="采购金额"></asp:Label>
-                  <asp:TextBox ID="tbPurchaseMoney" runat="server" CssClass="form-control"></asp:TextBox>
-                  <asp:Label ID="purStaff" runat="server" Text="采购人员"></asp:Label>
-                  <asp:TextBox ID="tbPurchaseStaff" runat="server" CssClass="form-control"></asp:TextBox>
-                  <asp:Label ID="purTime" runat="server" Text="采购时间"></asp:Label>
-                  <asp:TextBox ID="tbPurchaseTime" runat="server" CssClass="form-control"></asp:TextBox>--%>
                   <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:Sqlsever %>' SelectCommand="SELECT [sup_name] FROM [supplier]"></asp:SqlDataSource>
                   <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:Sqlsever %>' SelectCommand="SELECT [goods_name] FROM [storage_goods]"></asp:SqlDataSource>
                 </div>

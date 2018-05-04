@@ -164,7 +164,7 @@
                 <p><a class="btn btn-primary icon-btn" href="addpurchaselist.aspx"><i class="fa fa-plus"></i>添加</a></p>
               </div>
 
-
+            <%-- 采购申请表单 --%>
               <asp:GridView
                 Font-Size="14px"
                 ID="purchase_list"
@@ -181,8 +181,6 @@
                   <asp:BoundField DataField="pur_money" HeaderText="采购金额" />
                   <asp:BoundField DataField="sta_id" HeaderText="员工ID" />
                   <asp:BoundField DataField="pur_creat_time" HeaderText="创建时间" />
-
-
                   <asp:ButtonField HeaderText="查看" Text="查看" CommandName="detail" />
                   <asp:ButtonField HeaderText="修改" Text="修改" CommandName="change" />
                   <asp:TemplateField HeaderText="删除">
@@ -196,6 +194,7 @@
               </asp:GridView>
 
               <h3 class="card-title">明细</h3>
+              <%-- 采购明细表单 --%>
               <asp:GridView
                 ID="purchase_detail_list"
                 runat="server"
@@ -220,6 +219,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="card">
+              <%-- 修改采购状态 --%>
               <h3 class="card-title">修改</h3>
               <div class="card-body3">
                 <asp:Panel class="form-inline" runat="server">
