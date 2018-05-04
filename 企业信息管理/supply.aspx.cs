@@ -163,7 +163,8 @@ namespace 企业信息管理 {
             }
         }
 
-        private void outputBasicJavascriptLib() {
+        private void outputBasicJavascriptLib()
+        {
             Response.Write("<script src=\"js/jquery-2.1.4.min.js\"></script>");
         }
 
