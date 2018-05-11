@@ -24,7 +24,7 @@
   <div class="wrapper">
     <!-- Navbar-->
     <header class="main-header hidden-print">
-      <a class="logo" href="index.html">Vali</a>
+      <a class="logo" href="index.html">Red Store</a>
       <nav class="navbar navbar-static-top">
         <!-- 开启/关闭侧边栏-->
         <a class="sidebar-toggle" href="#"
@@ -117,31 +117,31 @@
         <ul class="sidebar-menu">
           <li>
             <a href="sell.aspx">
-              <i class="fa fa-dashboard"></i>
+              <i class="fa fa-cart-arrow-down"></i>
               <span>商品销售</span>
             </a>
           </li>
           <li>
             <a href="supply.aspx">
-              <i class="fa fa-file-text"></i>
+              <i class="fa fa-truck"></i>
               <span>商品进货及查询</span>
             </a>
           </li>
           <li class="active">
             <a href="stock.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-bank"></i>
               <span>库存管理</span>
             </a>
           </li>
           <li>
             <a href="suppliers.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-vcard-o"></i>
               <span>供应商管理</span>
             </a>
           </li>
           <li>
             <a href="staffmanage.aspx">
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-address-book"></i>
               <span>员工信息管理</span>
             </a>
           </li>
@@ -152,7 +152,7 @@
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-dashboard"></i>库存管理</h1>
+            <h1><i class="fa fa-bank"></i> 库存管理</h1>
           </div>
         </div>
         <div class="row">
@@ -175,11 +175,6 @@
                 <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
                 <Columns>
                   <asp:BoundField DataField="goods_id" HeaderText="商品ID"></asp:BoundField>
-                  <asp:TemplateField HeaderText="序号">
-                    <ItemTemplate>
-                      <%#Container.DataItemIndex+1 %>
-                    </ItemTemplate>
-                  </asp:TemplateField>
                   <asp:BoundField DataField="goods_name" HeaderText="商品名称" ReadOnly="true" />
                   <asp:BoundField DataField="goods_amount" HeaderText="商品数量" ReadOnly="true" />
                   <asp:ButtonField  HeaderText="修改" Text="修改" CommandName="XX" />

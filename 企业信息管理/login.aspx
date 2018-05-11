@@ -22,14 +22,14 @@
   </section>
   <section class="login-content">
     <div class="logo">
-      <h1>Vali</h1>
+      <h1>Red Store</h1>
     </div>
     <div class="login-box">
       <form runat="server" class="login-form">
         <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>登录</h3>
         <div class="form-group">
           <label class="control-label">用户名</label>
-          <asp:TextBox TextMode="Email" ID="tbUserName" runat="server" CssClass="form-control" AutoCompleteType="Email" />
+          <asp:TextBox ID="tbUserName" runat="server" CssClass="form-control" AutoCompleteType="Email"  TextMode="Email" />
         </div>
         <div class="form-group">
           <label class="control-label">密码</label>
@@ -69,6 +69,6 @@
 </body>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/plugins/pace.min.js"></script>
+<!--script src="js/plugins/pace.min.js"></!--script-->
 <script src="js/main.js"></script>
 </html>

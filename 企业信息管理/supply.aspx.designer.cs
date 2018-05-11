@@ -40,6 +40,15 @@ namespace 企业信息管理 {
         protected global::System.Web.UI.WebControls.GridView purchase_list;
         
         /// <summary>
+        /// no_detail 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label no_detail;
+        
+        /// <summary>
         /// purchase_detail_list 控件。
         /// </summary>
         /// <remarks>
@@ -47,32 +56,5 @@ namespace 企业信息管理 {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView purchase_detail_list;
-        
-        /// <summary>
-        /// tbPurID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbPurID;
-        
-        /// <summary>
-        /// tbPurStatus 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbPurStatus;
-        
-        /// <summary>
-        /// btnUpdate 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

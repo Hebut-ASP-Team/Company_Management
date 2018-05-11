@@ -20,7 +20,7 @@
   <div class="wrapper">
     <!-- Navbar-->
     <header class="main-header hidden-print">
-      <a class="logo" href="index.html">Vali</a>
+      <a class="logo" href="index.html">Red Store</a>
       <nav class="navbar navbar-static-top">
         <!-- 开启/关闭侧边栏-->
         <a class="sidebar-toggle" href="#"
@@ -148,7 +148,7 @@
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-address-book"></i>员工信息管理</h1>
+          <h1><i class="fa fa-address-book"></i> 员工信息管理</h1>
         </div>
       </div>
       <div class="row">
@@ -208,7 +208,7 @@
                     <asp:DropDownList ID="staSEX" CssClass="form-control" runat="server" style="margin-left: 10px;margin-right: 40px;">
                         <asp:ListItem Text="男" Value="男"></asp:ListItem>
                         <asp:ListItem Text="女" Value="女"></asp:ListItem>
-                      </asp:DropDownList>
+                    </asp:DropDownList>
                     </div>
                 </asp:Panel>
                 <asp:Panel class="form-inline" runat="server" style="margin-top: 10px;">  
@@ -222,7 +222,7 @@
                   </div>
                     <div class="form-group">
                     <label class="control-label">部门</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="staDEP" style="margin-left: 10px;margin-right: 40px;"></asp:TextBox>
+                    <asp:DropDownList CssClass="form-control" runat="server" ID="ddlDepartment" style="margin-left:10px; margin-right: 40px;"></asp:DropDownList>
                   </div>
                 </asp:Panel>
                   <div class="form-group"  style="float:right;margin-top:14px;">
@@ -241,7 +241,6 @@
   <!-- Javascripts-->
    <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
   <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>

@@ -10,25 +10,32 @@ using System.Data.OleDb;
 using System.Collections;
 using System.Data.SqlClient;
 
-namespace 企业信息管理 {
-    public partial class login : System.Web.UI.Page {
+namespace 企业信息管理
+{
+    public partial class login : System.Web.UI.Page
+    {
 
 
-        protected void Page_Load(object sender, EventArgs e) {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             btnLogin.Click += btnLoginClick;
+            if (Request.QueryString["username"] != null)
+                 tbUserName.Text = Request.QueryString["username"];
         }
 
-        protected void btnLoginClick(object sender, EventArgs e) {
-            if(verify()) {
+        protected void btnLoginClick(object sender, EventArgs e)
+        {
+            if (verify())
+            {
                 string sqldb
                     = ConfigurationManager.ConnectionStrings["Sqlsever"].ConnectionString;
                 SqlConnection MyCon = new SqlConnection(sqldb);
                 MyCon.Open();
-                SqlCommand cmd = new SqlCommand("select * from staff,department where staff.sta_id='" + tbUserName.Text+" ' and sta_password='" + tbPassword.Text + "' and staff.dep_id=department.dep_id", MyCon);
+                SqlCommand cmd = new SqlCommand("select * from staff,department where staff.sta_id='" + tbUserName.Text + " ' and sta_password='" + tbPassword.Text + "' and staff.dep_id=department.dep_id", MyCon);
                 SqlDataReader dr = cmd.ExecuteReader();
                 try
                 {
-                    if(dr.Read())
+                    if (dr.Read())
                     {
                         Session["username"] = dr["sta_id"].ToString();
                         Session["nickname"] = dr["sta_name"].ToString();
@@ -37,12 +44,12 @@ namespace 企业信息管理 {
                     }
                     else
                     {
-                        Response.Write("<script>alert(\"请输入用户名和密码\");window.location.href=('../login.aspx')</script>");
+                        Response.Write("<script>alert(\"用户名或密码错误\");window.location.href=('../login.aspx?username=" + tbUserName.Text + "')</script>");
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    Response.Write("<script>alert(\"登陆失败\");window.location.href=('../login.aspx')</script>");
+                    Response.Write("<script>alert(\"登录失败\");window.location.href=('../login.aspx?username=" + tbUserName.Text + "')</script>");
 
                 }
                 finally
@@ -50,12 +57,15 @@ namespace 企业信息管理 {
                     dr.Close();
                     MyCon.Close();
                 }
-            } else {
+            }
+            else
+            {
                 // 谈对话框警告
                 Response.Write("<script>alert(\"请输入用户名和密码\");</script>");
             }
         }
-        private bool verify() {
+        private bool verify()
+        {
             return tbUserName.Text.Length > 0 && tbPassword.Text.Length > 0;
         }
     }

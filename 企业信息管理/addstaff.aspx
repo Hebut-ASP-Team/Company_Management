@@ -20,7 +20,7 @@
   <div class="wrapper">
     <!-- Navbar-->
     <header class="main-header hidden-print">
-      <a class="logo" href="index.html">Vali</a>
+      <a class="logo" href="index.html">Red Store</a>
       <nav class="navbar navbar-static-top">
         <!-- 开启/关闭侧边栏-->
         <a class="sidebar-toggle" href="#"
@@ -147,7 +147,7 @@
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-address-book"></i>添加员工信息</h1>
+            <h1><i class="fa fa-address-book"></i> 添加员工信息</h1>
             <ul class="breadcrumb side">
               <li>
                 <i class="fa fa-home fa-lg"></i>
@@ -167,7 +167,7 @@
               <div class="card-body">
                     <div class="form-group">
                     <label class="control-label">邮箱</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaMAIL"></asp:TextBox>
+                    <asp:TextBox runat="server"  AutoCompleteType="Email"  TextMode="Email" CssClass="form-control" ID="addstaMAIL"></asp:TextBox>
                   </div>
                     <div class="form-group">
                     <label class="control-label">姓名</label>
@@ -175,7 +175,10 @@
                   </div>
                     <div class="form-group">
                     <label class="control-label">性别</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaSEX"></asp:TextBox>
+                        <asp:RadioButtonList runat="server" CssClass="form-control" ID="rblMale">
+                            <asp:ListItem Value="男" Selected="True">男</asp:ListItem>
+                            <asp:ListItem Value="女">女</asp:ListItem>
+                        </asp:RadioButtonList>
                   </div>
                     <div class="form-group">
                     <label class="control-label">年龄</label>
@@ -187,11 +190,11 @@
                   </div>
                     <div class="form-group">
                     <label class="control-label">部门</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaDEP"></asp:TextBox>
+                    <asp:DropDownList CssClass="form-control" runat="server" ID="ddlDepartment"></asp:DropDownList>
                   </div>
                   <div class="form-group">
                     <label class="control-label">密码</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaPWD"></asp:TextBox>
+                    <asp:TextBox runat="server"  TextMode="Password"  CssClass="form-control" ID="addstaPWD"></asp:TextBox>
                   </div>
               </div>
               <div class="card-footer">
@@ -219,7 +222,6 @@
   <!-- Javascripts-->
   <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
   <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
 </body>

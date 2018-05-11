@@ -22,6 +22,21 @@ namespace 企业信息管理 {
             username.Text = Session["nickname"] as string;
             comment.Text = Session["comment"] as string;
             showStaffList();
+            showDepartment();
+        }
+
+        private void showDepartment()
+        {
+            using(OleDbConnection conn =new OleDbConnection(connectionStr)) {
+                using(OleDbDataAdapter adapter = new OleDbDataAdapter("select dep_id id, dep_name name from dbo.department",conn)) {
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    ddlDepartment.DataSource = ds;
+                    ddlDepartment.DataTextField = "name";
+                    ddlDepartment.DataValueField = "id";
+                    ddlDepartment.DataBind();
+                }
+            }
         }
 
         protected void showStaffList() {
@@ -63,7 +78,15 @@ namespace 企业信息管理 {
                 staSEX.SelectedIndex = (selectedRow.Cells[2].Text.Equals("男")) ? 0 : 1;
                 staAGE.Text = selectedRow.Cells[3].Text;
                 staPHONE.Text = selectedRow.Cells[4].Text;
-                staDEP.Text = selectedRow.Cells[5].Text;
+                // ddlDepartment.Text = selectedRow.Cells[5].Text;
+                foreach (ListItem item in ddlDepartment.Items)
+                {
+                    if(item.Text.Equals(selectedRow.Cells[5].Text))
+                    {
+                        ddlDepartment.SelectedValue = item.Value;
+                        break;
+                    }
+                }
                 standardTable();
             }
         }
@@ -74,7 +97,7 @@ namespace 企业信息管理 {
                     = ConfigurationManager.ConnectionStrings["Sqlsever"].ConnectionString;
             SqlConnection MyCon_hyh = new SqlConnection(sqldb);
             MyCon_hyh.Open();
-            SqlCommand cmd_hyh = new SqlCommand("select * from department where dep_name='" + staDEP.Text + "'", MyCon_hyh);
+            SqlCommand cmd_hyh = new SqlCommand("select * from department where dep_name='" + ddlDepartment.SelectedValue + "'", MyCon_hyh);
             SqlDataReader dr_hyh = cmd_hyh.ExecuteReader();
             int dep_id = 0;
             if (dr_hyh.Read())
@@ -91,13 +114,13 @@ namespace 企业信息管理 {
                             selectedRow.Cells[2].Text = staSEX.SelectedValue;
                             selectedRow.Cells[3].Text = staAGE.Text;
                             selectedRow.Cells[4].Text = staPHONE.Text;
-                            selectedRow.Cells[5].Text = staDEP.Text;
+                            selectedRow.Cells[5].Text = ddlDepartment.SelectedItem.Text;
                             Session.Remove("selectedIndex");
                             staID.Text = "";
                             staNAME.Text = "";
                             staSEX.SelectedIndex = 0;
                             staAGE.Text = "";
-                            staDEP.Text = "";
+                            ddlDepartment.SelectedValue = "0";
                             staPHONE.Text = "";
                             standardTable();
                         } catch (Exception) { }
