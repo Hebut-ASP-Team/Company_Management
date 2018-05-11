@@ -103,7 +103,6 @@ namespace 企业信息管理 {
                 i++;
             }
             Session["list"] = null;  
-           // showGoodsList();
             Response.Redirect("sell.aspx");
         }
     }
