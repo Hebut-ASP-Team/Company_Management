@@ -1,6 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sell.aspx.cs" Inherits="企业信息管理.sell" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sellhistory.aspx.cs" Inherits="企业信息管理.sellhistory" %>
 
-<!--Test!-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -14,10 +13,11 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css"
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <title>商品销售 - 企业信息管理系统</title>
+    <title>商品进货及查询 - 企业信息管理系统 </title>
 </head>
 <body class="sidebar-mini fixed">
     <div class="wrapper">
+        <!-- Navbar-->
         <header class="main-header hidden-print">
             <a class="logo" href="index.html">Red Store</a>
             <nav class="navbar navbar-static-top">
@@ -33,7 +33,7 @@
                             data-toggle="dropdown" aria-expanded="false"><i
                                 class="fa fa-bell-o fa-lg"></i></a>
                             <ul class="dropdown-menu">
-                                <li class="not-head">您有4条新通知
+                                <li class="not-head">You have 4 new notifications.
                                 </li>
                                 <li><a class="media" href="javascript:"><span
                                     class="media-left media-icon"><span
@@ -65,7 +65,8 @@
                                             class="text-muted block">2min ago</span>
                                     </div>
                                 </a></li>
-                                <li class="not-footer"><a href="#">查看所有通知</a></li>
+                                <li class="not-footer"><a href="#">See all
+                                notifications.</a></li>
                             </ul>
                         </li>
                         <!-- 用户菜单-->
@@ -100,7 +101,7 @@
                     </div>
                     <div class="pull-left info">
                         <p>
-                            <asp:Label runat="server" ID="username" Text="用户名" />
+                            <asp:Label runat="server" ID="username" />
                         </p>
                         <p class="designation">
                             <asp:Label runat="server" ID="comment" />
@@ -142,156 +143,94 @@
                 </ul>
             </section>
         </aside>
-        <form runat="server">
-            <div class="content-wrapper">
-                <div class="page-title">
-                    <div>
-                        <h1><i class="fa fa-cart-arrow-down"></i> 商品销售</h1>
-                    </div>
-                    <div>
-                        <ul class="breadcrumb">
-                            <li><i class="fa fa-home fa-lg"></i></li>
-                            <li><a href="#">主页</a></li>
-                        </ul>
-                    </div>
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div>
+                    <h1><i class="fa fa-cart-arrow-down"></i> 销售历史记录</h1>
+                    <ul class="breadcrumb side">
+                        <li>
+                            <i class="fa fa-home fa-lg"></i>
+                        </li>
+                        <li class="active">
+                            <a href="suppliers.aspx">商品销售</a>
+                        </li>
+                        <li>销售历史记录
+                        </li>
+                    </ul>
                 </div>
+            </div>
+            <form runat="server">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-title-w-btn">
-                                <h3 class="card-title">商品列表</h3>
-                                <p><a class="btn btn-primary icon-btn" href="sellhistory.aspx"><i class="fa fa-arrow-right"></i>查看销售历史记录	</a></p>
-                            </div>
+                            <h3 class="card-title">销售列表</h3>
+                            <%-- 采购申请表单 --%>
                             <asp:GridView
                                 Font-Size="14px"
-                                GridLines="None"
-                                DataKeyNames="goods_id"
-                                CssClass="table table-striped"
+                                ID="purchase_list"
                                 runat="server"
-                                ID="gv_sell_list"
-                                AutoGenerateColumns="false"
-                                OnRowCommand="gv_sell_list_RowCommand"
-                                OnRowSelect="gv_sell_list_RowSelect">
+                                CssClass="table table-striped"
+                                AutoGenerateColumns="False"
+                                DataKeyNames="sale_id"
+                                GridLines="None"
+                                OnRowDeleting="purchase_list_RowDeleting" OnRowCommand="purchase_list_RowCommand">
                                 <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
                                 <Columns>
-                                    <asp:TemplateField HeaderText="序号">
+                                    <asp:BoundField DataField="sale_id" HeaderText="销售ID" />
+                                    <asp:BoundField DataField="sale_money" HeaderText="销售金额" />
+                                    <asp:BoundField DataField="sta_id" HeaderText="员工ID" />
+                                    <asp:BoundField DataField="sale_creat_time" HeaderText="创建时间" />
+                                    <asp:ButtonField HeaderText="查看" Text="查看" CommandName="detail" />
+                                    <asp:TemplateField HeaderText="删除">
                                         <ItemTemplate>
-                                            <%#Container.DataItemIndex+1 %>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:BoundField DataField="goods_id" HeaderText="商品编号" ReadOnly="true" />
-                                    <asp:BoundField DataField="goods_name" HeaderText="商品名称" ReadOnly="true" />
-                                    <asp:BoundField DataField="goods_amount" HeaderText="剩余数量" ReadOnly="true" />
-                                    <asp:TemplateField HeaderText="购买">
-                                        <ItemTemplate>
-                                            <div class=" add-task-row">
-                                                <!-- Button trigger modal -->
-                                                <button class="selectOfBuy" type="button" data-toggle="modal" data-target="#myModal0">
-                                                    购买
-                                                </button>
-                                            </div>
+                                            <asp:Button runat="server" CssClass="btn btn-danger" Style="padding: 2px 8px"
+                                                ID="delete" CommandName="Delete" CommandArgument="<% Eval('sale_id')%>" Text="×"
+                                                OnClientClick="return confirm('你确定删除吗?')" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
-                                <RowStyle VerticalAlign="Middle" />
                             </asp:GridView>
                         </div>
                     </div>
                 </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="myModal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel0">购买数量</h4>
-                            </div>
-                            <div class="modal-body">
-                                <h5>商品ID</h5>
-                                <asp:TextBox CssClass="form-control" runat="server" ID="goodsid"></asp:TextBox>
-                                <h5>商品名称</h5>
-                                <asp:TextBox CssClass="form-control" runat="server" ID="goodsname"></asp:TextBox>
-                                <h5>剩余数量</h5>
-                                <asp:TextBox CssClass="form-control" runat="server" ID="goodsamount"></asp:TextBox>
-                                <h5>购买数量</h5>
-                                <asp:TextBox runat="server" type="number" class="form-control" ID="buyAmount" min="1" />
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button id="queren" type="button" class="btn btn-success">确认</button>
-                                <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Style="display: none" />
-                                <script>document.getElementById("queren").addEventListener("click", function () {
-    document.getElementById("<%=btnOK.ClientID %>").click();
-});
-
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <h3 class="card-title">总订单</h3>
-                            <div class="card-body3">
-                                <asp:Panel class="form-inline" runat="server">
-                                    <asp:GridView
-                                        Font-Size="12px"
-                                        GridLines="None"
-                                        CssClass="table table-striped"
-                                        runat="server"
-                                        ID="good_temporary"
-                                        AutoGenerateColumns="false">
-                                        <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
-                                        <Columns>
-                                            <asp:TemplateField HeaderText="序号">
-                                                <ItemTemplate>
-                                                    <%#((企业信息管理.Goods)(Container.DataItem)).seq%>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="商品编号">
-                                                <ItemTemplate>
-                                                    <%#((企业信息管理.Goods)(Container.DataItem)).id%>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="名称">
-                                                <ItemTemplate>
-                                                    <%#((企业信息管理.Goods)(Container.DataItem)).name%>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="购买数量">
-                                                <ItemTemplate>
-                                                    <%#((企业信息管理.Goods)(Container.DataItem)).num%>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
-                                        <RowStyle VerticalAlign="Middle" />
-                                    </asp:GridView>
-                                    <div class="form-group">
-                                        <button id="sellCommit" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>提交订单</button>
-                                        <asp:Button ID="btnSellCommit" Style="display: none" runat="server" OnClick="btnSellCommit_Click" />
-                                    </div>
-                                </asp:Panel>
-                            </div>
+                            <h3 class="card-title">明细</h3>
+                            <asp:Label ID="no_detail" runat="server" Text="" />
+                            <%-- 采购明细表单 --%>
+                            <asp:GridView
+                                ID="sale_detail_list"
+                                runat="server"
+                                CssClass="table table-striped"
+                                AutoGenerateColumns="False"
+                                DataKeyNames="sale_id"
+                                GridLines="None">
+                                <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
+                                <Columns>
+                                    <asp:BoundField DataField="saledet_id" HeaderText="明细ID" />
+                                    <asp:BoundField DataField="goods_id" HeaderText="商品ID" />
+                                    <asp:BoundField DataField="goods_name" HeaderText="商品名称" />
+                                    <asp:BoundField DataField="saledet_money" HeaderText="数量" />
+                                    <asp:BoundField DataField="saledet_money" HeaderText="单价" />
+                                    <asp:BoundField DataField="saledet_purchaser" HeaderText="供应商" />
+                                </Columns>
+                            </asp:GridView>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
     <!-- Javascripts-->
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
-        $('#<%=gv_sell_list.ClientID%>').DataTable({
+        $('#<%=purchase_list.ClientID%>').DataTable({
             language: {
                 "sProcessing": "处理中...",
                 "sLengthMenu": "显示 _MENU_ 项结果",
@@ -317,23 +256,6 @@
                 }
             }
         });</script>
-    <script>
-        $('.selectOfBuy').click(function () {
-            var clickRow = $(this).parents("tr")[0];
-            var cells = clickRow.cells;
-            // 商品ID
-            $("#<%=goodsid.ClientID %>").attr("value", cells[1].innerText);
-        // 商品名称
-      $("#<%=goodsname.ClientID %>").attr("value", cells[2].innerText);
-        // 商品数量
-        $("#<%=goodsamount.ClientID %>").attr("value", cells[3].innerText);
-        // 最大数量
-        $("#<%=buyAmount.ClientID%>").attr("max", cells[3].innerText);
-        $("#<%=buyAmount.ClientID%>").attr("value", "1");
-    });
-    $('#sellCommit').click(function () {
-        $('#<%=btnSellCommit.ClientID%>').click();
-    });
-    </script>
 </body>
 </html>
+

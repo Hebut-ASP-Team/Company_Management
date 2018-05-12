@@ -217,6 +217,7 @@
                                     <asp:BoundField DataField="purdet_id" HeaderText="明细ID" />
                                     <asp:BoundField DataField="pur_id" HeaderText="采购ID" />
                                     <asp:BoundField DataField="goods_id" HeaderText="商品ID" />
+                                    <asp:BoundField DataField="goods_name" HeaderText="商品名称" />
                                     <asp:BoundField DataField="purdet_amount" HeaderText="采购数量" />
                                     <asp:BoundField DataField="purdet_money" HeaderText="单价" />
                                     <asp:BoundField DataField="purdet_supplier" HeaderText="供应商" />

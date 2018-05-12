@@ -68,8 +68,8 @@ namespace 企业信息管理 {
                 Session["selectedIndex"] = index;
                 GridViewRow selectedRow = gvCompanyList.Rows[index];
                 tbID.Text = selectedRow.Cells[0].Text;
-                tbCompanyName.Text = selectedRow.Cells[2].Text;
-                tbGoodsAmount.Text= selectedRow.Cells[3].Text;
+                tbCompanyName.Text = selectedRow.Cells[1].Text;
+                tbGoodsAmount.Text= selectedRow.Cells[2].Text;
                 standardTable();
             }
         }
@@ -89,8 +89,8 @@ namespace 企业信息管理 {
                         try
                         {
                             GridViewRow selectedRow = gvCompanyList.Rows[(int)Session["selectedIndex"]];
-                            selectedRow.Cells[2].Text = tbCompanyName.Text;
-                            selectedRow.Cells[3].Text = tbGoodsAmount.Text;
+                            selectedRow.Cells[1].Text = tbCompanyName.Text;
+                            selectedRow.Cells[2].Text = tbGoodsAmount.Text;
                             Session.Remove("selectedIndex");
                             tbID.Text = "";
                             tbCompanyName.Text = "";

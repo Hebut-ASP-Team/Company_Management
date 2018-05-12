@@ -86,6 +86,7 @@
     <Content Include="staffmanage.aspx" />
     <Content Include="stock.aspx" />
     <Content Include="suppliers.aspx" />
+    <Content Include="sellhistory.aspx" />
     <Content Include="supply.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -155,6 +156,13 @@
     </Compile>
     <Compile Include="suppliers.aspx.designer.cs">
       <DependentUpon>suppliers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sellhistory.aspx.cs">
+      <DependentUpon>sellhistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sellhistory.aspx.designer.cs">
+      <DependentUpon>sellhistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="supply.aspx.cs">
       <DependentUpon>supply.aspx</DependentUpon>

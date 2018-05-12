@@ -13,7 +13,7 @@ using System.Web.UI.WebControls;
 /// </summary>
 namespace 企业信息管理
 {
-    public partial class supply : System.Web.UI.Page
+    public partial class sellhistory : System.Web.UI.Page
     {
         //连接字符串
         string connectionStr = ConfigurationManager.ConnectionStrings["access"].ConnectionString;
@@ -46,7 +46,7 @@ namespace 企业信息管理
             {
                 using (OleDbConnection conn = new OleDbConnection(connectionStr))
                 {
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from purchase ", conn))
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter("select * from [dbo].[sale]", conn))
                     {
                         DataSet ds = new DataSet();
                         adapter.Fill(ds, "purchase");
@@ -72,11 +72,11 @@ namespace 企业信息管理
         /// 根据pur_id删除一行采购数据
         /// </summary>
         /// <param name="supId"></param>
-        protected void Delete(int purId)
+        protected void Delete(int saleId)
         {
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbCommand cmd = new OleDbCommand("delete from purchase where pur_id=" + purId, conn))
+                using (OleDbCommand cmd = new OleDbCommand("delete from [dbo].[sale] where sale_id=" + saleId, conn))
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -101,17 +101,16 @@ namespace 企业信息管理
         /// <summary>
         /// 显示采购明细表
         /// </summary>
-        protected void showPurchaseDetailList(int pur_id)
+        protected void showSaleDetailList(int pur_id)
         {
-
             using (OleDbConnection conn = new OleDbConnection(connectionStr))
             {
-                using (OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM purchase_detail left join [storage_goods] on purchase_detail.goods_id = storage_goods.goods_id WHERE pur_id=" + pur_id, conn))
+                using (OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM [dbo].[sale_detail] left join (select goods_id iii, goods_name from [dbo].[storage_goods] where goods_id in (select goods_id from sale_detail where sale_id="+pur_id+"))T on goods_id = T.iii  WHERE [sale_id]=" + pur_id, conn))
                 {
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);
-                    purchase_detail_list.DataSource = ds;
-                    purchase_detail_list.DataBind();
+                    sale_detail_list.DataSource = ds;
+                    sale_detail_list.DataBind();
                     if (ds.Tables[0].Rows.Count <= 0)
                         no_detail.Text = "没有数据";
                     else
@@ -133,35 +132,7 @@ namespace 企业信息管理
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow selectedRow = purchase_list.Rows[index];
                 int pur_id = Convert.ToInt32(selectedRow.Cells[0].Text);
-                showPurchaseDetailList(pur_id);
-                standardTable();
-            }
-            //“修改”按钮
-            else if (e.CommandName.Equals("change"))
-            {
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow selectedRow = purchase_list.Rows[index];
-                using (OleDbConnection conn = new OleDbConnection(connectionStr))
-                {
-                    using (OleDbCommand cmd = new OleDbCommand("update purchase set pur_status=3 where pur_id=" + selectedRow.Cells[0].Text, conn))
-                    {
-                        conn.Open();
-                        int affectedRows = cmd.ExecuteNonQuery();
-                        outputBasicJavascriptLib();
-                        if (affectedRows > 0)
-                        {
-                            selectedRow.Cells[1].Text = "3";
-                            Button btn = selectedRow.FindControl("btnIn") as Button;
-                            btn.Enabled = false;
-                            btn.Text = "已入库";
-                            // SweetAlert: http://lipis.github.io/bootstrap-sweetalert/
-                            Response.Write("<script>$(document).ready(function(){swal(\"修改成功\", \"\", \"success\");})</script>");
-                        }
-                        else
-                            Response.Write("<script>$(document).ready(function(){swal(\"修改失败\", \"\", \"error\");})</script>");
-                        standardTable();
-                    }
-                }
+                showSaleDetailList(pur_id);
                 standardTable();
             }
         }
