@@ -4,14 +4,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta charset="utf-8"   />
-  <meta charset="utf-8"  />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- CSS-->
   <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <!-- Font-icon css--> 
+  <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <title>添加供应商 - 企业信息管理系统</title>
@@ -140,10 +140,16 @@
               <span>供应商管理</span>
             </a>
           </li>
-          <li  class="active">
+          <li class="active">
             <a href="staffmanage.aspx">
               <i class="fa fa-address-book"></i>
               <span>员工信息管理</span>
+            </a>
+          </li>
+          <li>
+            <a href="finance.aspx">
+              <i class="fa fa-cny"></i>
+              <span>财务统计</span>
             </a>
           </li>
         </ul>
@@ -153,7 +159,7 @@
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-address-book"></i> 添加员工信息</h1>
+            <h1><i class="fa fa-address-book"></i>添加员工信息</h1>
             <ul class="breadcrumb side">
               <li>
                 <i class="fa fa-home fa-lg"></i>
@@ -171,43 +177,46 @@
             <div class="card">
               <h3 class="card-title">添加员工信息</h3>
               <div class="card-body">
-                    <div class="form-group">
-                    <label class="control-label">邮箱</label>
-                    <asp:TextBox runat="server"  AutoCompleteType="Email"  TextMode="Email" CssClass="form-control" ID="addstaMAIL"></asp:TextBox>
-                  </div>
-                    <div class="form-group">
-                    <label class="control-label">姓名</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaNAME"></asp:TextBox>
-                  </div>
-                    <div class="form-group">
-                    <label class="control-label">性别</label>
-                        <asp:RadioButtonList runat="server" CssClass="form-control" ID="rblMale">
-                            <asp:ListItem Value="男" Selected="True">男</asp:ListItem>
-                            <asp:ListItem Value="女">女</asp:ListItem>
-                        </asp:RadioButtonList>
-                  </div>
-                    <div class="form-group">
-                    <label class="control-label">年龄</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaAGE"></asp:TextBox>
-                  </div>
-                    <div class="form-group">
-                    <label class="control-label">联系方式</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="addstaPHONE"></asp:TextBox>
-                  </div>
-                    <div class="form-group">
-                    <label class="control-label">部门</label>
-                    <asp:DropDownList CssClass="form-control" runat="server" ID="ddlDepartment"></asp:DropDownList>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label">密码</label>
-                    <asp:TextBox runat="server"  TextMode="Password"  CssClass="form-control" ID="addstaPWD"></asp:TextBox>
-                  </div>
+                <div class="form-group">
+                  <label class="control-label">邮箱</label>
+                  <asp:TextBox runat="server" AutoCompleteType="Email" TextMode="Email" CssClass="form-control"
+                    ID="addstaMAIL"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">姓名</label>
+                  <asp:TextBox runat="server" CssClass="form-control" ID="addstaNAME"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">性别</label>
+                  <asp:RadioButtonList runat="server" CssClass="form-control" ID="rblMale">
+                    <asp:ListItem Value="男" Selected="True">男</asp:ListItem>
+                    <asp:ListItem Value="女">女</asp:ListItem>
+                  </asp:RadioButtonList>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">年龄</label>
+                  <asp:TextBox runat="server" CssClass="form-control" ID="addstaAGE"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">联系方式</label>
+                  <asp:TextBox runat="server" CssClass="form-control" ID="addstaPHONE"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">部门</label>
+                  <asp:DropDownList CssClass="form-control" runat="server" ID="ddlDepartment"></asp:DropDownList>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">密码</label>
+                  <asp:TextBox runat="server" TextMode="Password" CssClass="form-control" ID="addstaPWD"></asp:TextBox>
+                </div>
               </div>
               <div class="card-footer">
-                <button id="btn_commit" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>添加</button>
+                <button id="btn_commit" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle">
+                </i>添加</button>
                 &nbsp;&nbsp;&nbsp;
-                <a class="btn btn-default icon-btn" href="staffmanage.aspx"><i class="fa fa-fw fa-lg fa-times-circle"></i>取消</a>
-                <asp:Button runat="server" style="display:none" ID="btnCommit" OnClick="btnCommit_Click" />
+                <a class="btn btn-default icon-btn" href="staffmanage.aspx"><i class="fa fa-fw fa-lg fa-times-circle">
+                </i>取消</a>
+                <asp:Button runat="server" Style="display: none" ID="btnCommit" OnClick="btnCommit_Click" />
                 <script>
                   document.getElementById("btn_commit").addEventListener("click", function () {
                     if ($("#<%=addstaNAME.ClientID %>").val().length > 0) {

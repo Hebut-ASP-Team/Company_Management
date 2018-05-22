@@ -151,6 +151,12 @@
               <span>员工信息管理</span>
             </a>
           </li>
+            <li>
+            <a href="finance.aspx">
+              <i class="fa fa-cny"></i>
+              <span>财务统计</span>
+            </a>
+          </li>
         </ul>
       </section>
     </aside>

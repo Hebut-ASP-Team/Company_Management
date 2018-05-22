@@ -71,6 +71,7 @@
     <Content Include="addpurchaselist.aspx" />
     <Content Include="addstaff.aspx" />
     <Content Include="addsupplier.aspx" />
+    <Content Include="finance.aspx" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="addsupplier.aspx.designer.cs">
       <DependentUpon>addsupplier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="finance.aspx.cs">
+      <DependentUpon>finance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="finance.aspx.designer.cs">
+      <DependentUpon>finance.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

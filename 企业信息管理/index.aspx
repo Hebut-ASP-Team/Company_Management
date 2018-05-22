@@ -142,18 +142,24 @@
               <span>员工信息管理</span>
             </a>
           </li>
+            <li>
+            <a href="finance.aspx">
+              <i class="fa fa-cny"></i>
+              <span>财务统计</span>
+            </a>
+          </li>
         </ul>
       </section>
     </aside>
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>软件工程教学网站</h1>
+          <h1><i class="fa fa-dashboard"></i> 主页</h1>
         </div>
         <div>
           <ul class="breadcrumb">
             <li><i class="fa fa-home fa-lg"></i></li>
-            <li><a href="#">主页</a></li>
+            <li><a href="index.aspx">主页</a></li>
           </ul>
         </div>
       </div>
