@@ -19,7 +19,7 @@
   <div class="wrapper">
     <!-- Navbar-->
     <header class="main-header hidden-print">
-      <a class="logo" href="index.html">Vali</a>
+      <a class="logo" href="index.html">Red Store</a>
       <nav class="navbar navbar-static-top">
         <!-- 开启/关闭侧边栏-->
         <a class="sidebar-toggle" href="#"
@@ -154,7 +154,7 @@
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i> 主页</h1>
+          <h1><i class="fa fa-home"></i> 主页</h1>
         </div>
         <div>
           <ul class="breadcrumb">

@@ -14,13 +14,13 @@
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <title>主页 - 企业信息管理系统</title>
+  <title>财务统计 - 企业信息管理系统</title>
 </head>
 <body class="sidebar-mini fixed">
   <div class="wrapper">
     <!-- Navbar-->
     <header class="main-header hidden-print">
-      <a class="logo" href="index.html">Vali</a>
+      <a class="logo" href="index.html">Red Store</a>
       <nav class="navbar navbar-static-top">
         <!-- 开启/关闭侧边栏-->
         <a class="sidebar-toggle" href="#"
@@ -155,53 +155,18 @@
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>软件工程教学网站</h1>
+          <h1><i class="fa fa-cny"></i> 财务统计</h1>
         </div>
         <div>
           <ul class="breadcrumb">
             <li><i class="fa fa-home fa-lg"></i></li>
-            <li><a href="#">主页</a></li>
+            <li><a href="index.aspx">主页</a></li>
           </ul>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <div class="card">
-            <h3 class="card-title">未完成作业</h3>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>标题</th>
-                  <th>截止时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>软件过程实验1</td>
-                  <td>2017-5-1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>简述软件过程</td>
-                  <td>2018-6-1</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>软件过程2</td>
-                  <td>2016-5-2</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="mt-40 mb-20">
-              <a class="btn btn-primary icon-btn mr-10"
-                href="./homework.html">
-                <i class="fa fa-file-text"></i>查看所有作业</a>
-              <a class="btn btn-info icon-btn mr-10">
-                <i class="fa fa-github"></i>GitHub</a>
-            </p>
-          </div>
+          
         </div>
         <div class="col-md-6">
           <div class="card">
