@@ -67,6 +67,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="48.jpg" />
     <Content Include="addpurchaselist.aspx" />
     <Content Include="addstaff.aspx" />
     <Content Include="addsupplier.aspx" />

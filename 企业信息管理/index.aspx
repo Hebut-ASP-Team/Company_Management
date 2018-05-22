@@ -96,7 +96,7 @@
       <section class="sidebar">
         <div class="user-panel">
           <div class="pull-left image">
-            <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
+            <img class="img-circle" src="48.jpg"
               alt="User Image">
           </div>
           <div class="pull-left info">
