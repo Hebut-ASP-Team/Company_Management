@@ -111,6 +111,12 @@
         <!-- 侧边菜单-->
         <ul class="sidebar-menu">
           <li>
+            <a href="index.aspx">
+              <i class="fa fa-home"></i>
+              <span>主页</span>
+            </a>
+          </li>
+          <li>
             <a href="sell.aspx">
               <i class="fa fa-cart-arrow-down"></i>
               <span>商品销售</span>
