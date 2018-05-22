@@ -146,7 +146,7 @@
             <div class="content-wrapper">
                 <div class="page-title">
                     <div>
-                        <h1><i class="fa fa-cart-arrow-down"></i> 商品销售</h1>
+                        <h1><i class="fa fa-cart-arrow-down"></i>商品销售</h1>
                     </div>
                     <div>
                         <ul class="breadcrumb">
@@ -288,6 +288,24 @@
     <script src="js/main.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script>
+        $('.selectOfBuy').click(function () {
+            var clickRow = $(this).parents("tr")[0];
+            var cells = clickRow.cells;
+            // 商品ID
+            $("#<%=goodsid.ClientID %>").attr("value", cells[1].innerText);
+            // 商品名称
+            $("#<%=goodsname.ClientID %>").attr("value", cells[2].innerText);
+            // 商品数量
+            $("#<%=goodsamount.ClientID %>").attr("value", cells[3].innerText);
+            // 最大数量
+            $("#<%=buyAmount.ClientID%>").attr("max", cells[3].innerText);
+            $("#<%=buyAmount.ClientID%>").attr("value", "1");
+        });
+        $('#sellCommit').click(function () {
+            $('#<%=btnSellCommit.ClientID%>').click();
+        });
+    </script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
@@ -317,23 +335,6 @@
                 }
             }
         });</script>
-    <script>
-        $('.selectOfBuy').click(function () {
-            var clickRow = $(this).parents("tr")[0];
-            var cells = clickRow.cells;
-            // 商品ID
-            $("#<%=goodsid.ClientID %>").attr("value", cells[1].innerText);
-        // 商品名称
-      $("#<%=goodsname.ClientID %>").attr("value", cells[2].innerText);
-        // 商品数量
-        $("#<%=goodsamount.ClientID %>").attr("value", cells[3].innerText);
-        // 最大数量
-        $("#<%=buyAmount.ClientID%>").attr("max", cells[3].innerText);
-        $("#<%=buyAmount.ClientID%>").attr("value", "1");
-    });
-    $('#sellCommit').click(function () {
-        $('#<%=btnSellCommit.ClientID%>').click();
-    });
-    </script>
+
 </body>
 </html>
