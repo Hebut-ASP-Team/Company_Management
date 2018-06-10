@@ -195,12 +195,12 @@
                   <asp:BoundField DataField="goods_id" HeaderText="商品编号" ReadOnly="true" />
                   <asp:BoundField DataField="goods_name" HeaderText="商品名称" ReadOnly="true" />
                   <asp:BoundField DataField="goods_amount" HeaderText="剩余数量" ReadOnly="true" />
-                  <asp:TemplateField HeaderText="购买">
+                  <asp:TemplateField HeaderText="销售">
                     <ItemTemplate>
                       <div class=" add-task-row">
                         <!-- Button trigger modal -->
                         <button class="selectOfBuy" type="button" data-toggle="modal" data-target="#myModal0">
-                          购买
+                          销售
                         </button>
                       </div>
                     </ItemTemplate>
@@ -228,7 +228,7 @@
                 <asp:TextBox CssClass="form-control" runat="server" ID="goodsname"></asp:TextBox>
                 <h5>剩余数量</h5>
                 <asp:TextBox CssClass="form-control" runat="server" ID="goodsamount"></asp:TextBox>
-                <h5>购买数量</h5>
+                <h5>销售数量</h5>
                 <asp:TextBox runat="server" type="number" class="form-control" ID="buyAmount" min="1" />
               </div>
               <div class="modal-footer">

@@ -182,8 +182,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ajax\" />
     <Folder Include="css\" />
+    <Folder Include="echarts-2.2.7\" />
     <Folder Include="images\" />
+    <Folder Include="Javascript\" />
     <Folder Include="js\" />
   </ItemGroup>
   <PropertyGroup>

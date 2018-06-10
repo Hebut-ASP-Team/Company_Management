@@ -93,16 +93,20 @@
       </nav>
     </header>
     <!-- 侧边栏-->
-    <aside class="main-sidebar hidden-print">
+     <aside class="main-sidebar hidden-print">
       <section class="sidebar">
         <div class="user-panel">
           <div class="pull-left image">
             <img class="img-circle" src="48.jpg"
-              alt="User Image">
+              alt="User Image" />
           </div>
           <div class="pull-left info">
-            <p>用户名</p>
-            <p class="designation">属性</p>
+            <p>
+              <asp:Label runat="server" ID="username" />
+            </p>
+            <p class="designation">
+              <asp:Label runat="server" ID="comment" />
+            </p>
           </div>
         </div>
         <!-- 侧边菜单-->
@@ -165,17 +169,16 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="card">
-            <h3 class="card-title">未读公告</h3>
-            <ul>
-              <li><a href="notice-detail.html">公告1</a></li>
-            </ul>
+            <h3 class="card-title">每月财务统计</h3>
+              <div id="main" style="height: 400px"></div>
+              
             <a class="btn btn-success icon-btn mr-10" href="./notice.html">
-              <i class="fa fa-bullhorn"></i>所有公告</a>
+              <i class="fa fa-bullhorn"></i>财务报表</a>
           </div>
         </div>
       </div>
@@ -186,6 +189,74 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="echarts-2.2.7/build/dist/echarts.js"></script>
+    <script type="text/javascript">  
+
+                  require.config({
+                      packages : [ {
+                          name : 'echarts',
+                          location : 'echarts-2.2.7/src',
+                          main : 'echarts'
+                      }, {
+                          name : 'zrender',
+                          location : 'echarts-2.2.7/src',
+                          main : 'zrender'
+                      } ]
+                  });
+                  require(['echarts', 'echarts/chart/bar', 'echarts/chart/line'],
+                  function (ec) {
+                      var myChart = ec.init(document.getElementById('main'), 'macarons');
+                      var option = {
+                          tooltip : {
+                              trigger : 'axis'
+                          },
+                          legend : {
+                              data : [ '收入', '支出' ]
+                          },
+                          toolbox : {
+                              show : true,
+                              feature : {
+                                  mark : true,
+                                  dataView : {
+                                      readOnly : false
+                                  },
+                                  magicType : [ 'line', 'bar' ],
+                                  restore : true,
+                                  saveAsImage : true
+                              }
+                          },
+                          calculable: true,
+                          dataZoom: {
+                              show: true,
+                              realtime: true,
+                          },
+                          xAxis : [ {
+                              type : 'category',
+                              data : [ '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月']
+                          } ],
+                          yAxis : [ {
+                              type : 'value',
+                              splitArea : {
+                                  show : true
+                              }
+                          } ],
+                          series : [
+                          {
+                              name : '收入',
+                              type : 'bar',
+                              data: [700, 200, 300, 500, 100, 600, 1000, 900, 700.75]
+                          },
+                          {
+                              name : '支出',
+                              type : 'bar',
+                              data: [400, 300, 100, 300, 200, 300, 700, 500, 400]
+                          } ]
+                      };   
+        // 使用刚指定的配置项和数据显示图表。  
+                      myChart.setOption(option);
+                      
+                  });
+    </script>  
 </body>
 </html>
 

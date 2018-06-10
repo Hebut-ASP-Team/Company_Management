@@ -15,6 +15,9 @@
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <title>登录 - 企业信息管理系统</title>
+    
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
   <section class="material-half-bg">
@@ -67,8 +70,6 @@
     </div>
   </section>
 </body>
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<!--script src="js/plugins/pace.min.js"></!--script-->
+<script src="js/plugins/pace.min.js">
 <script src="js/main.js"></script>
 </html>
