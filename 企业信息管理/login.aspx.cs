@@ -40,7 +40,7 @@ namespace 企业信息管理
                         Session["username"] = dr["sta_id"].ToString();
                         Session["nickname"] = dr["sta_name"].ToString();
                         Session["comment"] = dr["dep_name"].ToString();
-                        Response.Redirect("sell.aspx");
+                        Response.Redirect("index.aspx");
                     }
                     else
                     {

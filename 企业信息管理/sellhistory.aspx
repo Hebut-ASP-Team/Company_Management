@@ -164,7 +164,7 @@
               <i class="fa fa-home fa-lg"></i>
             </li>
             <li class="active">
-              <a href="suppliers.aspx">商品销售</a>
+              <a href="sell.aspx">商品销售</a>
             </li>
             <li>销售历史记录
             </li>
