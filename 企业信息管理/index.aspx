@@ -142,7 +142,7 @@
               <span>员工信息管理</span>
             </a>
           </li>
-            <li>
+          <li>
             <a href="finance.aspx">
               <i class="fa fa-cny"></i>
               <span>财务统计</span>
@@ -154,7 +154,7 @@
     <div class="content-wrapper">
       <div class="page-title">
         <div>
-          <h1><i class="fa fa-home"></i> 主页</h1>
+          <h1><i class="fa fa-home"></i>主页</h1>
         </div>
         <div>
           <ul class="breadcrumb">
@@ -163,56 +163,68 @@
           </ul>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card">
-            <h3 class="card-title">未完成作业</h3>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>标题</th>
-                  <th>截止时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>软件过程实验1</td>
-                  <td>2017-5-1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>简述软件过程</td>
-                  <td>2018-6-1</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>软件过程2</td>
-                  <td>2016-5-2</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="mt-40 mb-20">
-              <a class="btn btn-primary icon-btn mr-10"
-                href="./homework.html">
-                <i class="fa fa-file-text"></i>查看所有作业</a>
-              <a class="btn btn-info icon-btn mr-10">
-                <i class="fa fa-github"></i>GitHub</a>
-            </p>
+      <form runat="server">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <h3 class="card-title">今日销售统计</h3>
+              <div class="card-body">
+                共销售<asp:Label runat="server" ID="lbCount"></asp:Label>件商品, 总计<asp:Label runat="server"
+                  ID="lbMoney"></asp:Label>元
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="card">
-            <h3 class="card-title">未读公告</h3>
-            <ul>
-              <li><a href="notice-detail.html">公告1</a></li>
-            </ul>
-            <a class="btn btn-success icon-btn mr-10" href="./notice.html">
-              <i class="fa fa-bullhorn"></i>所有公告</a>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <h3 class="card-title">本月员工销售额排行</h3>
+              <div class="card-body">
+                <%-- 采购申请表单 --%>
+                <asp:GridView
+                  Font-Size="14px"
+                  ID="purchase_list"
+                  runat="server"
+                  CssClass="table table-striped"
+                  AutoGenerateColumns="False"
+                  DataKeyNames="pur_id"
+                  GridLines="None">
+                  <FooterStyle BackColor="#c6c3c6" ForeColor="Black" />
+                  <Columns>
+                    <asp:TemplateField HeaderText="序号">
+                      <ItemTemplate>
+                        <%#Container.DataItemIndex+1 %>
+                      </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="sup_name" HeaderText="供应商" ReadOnly="true" />
+                  </Columns>
+                </asp:GridView>
+                这个表格用DataGridView
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="card-title">本月销量排行</h3>
+              <div class="card-body">
+                这个表格用DataGridView
+              </div>
+              <div class="card-footer">
+                <a class="btn btn-primary" href="sellhistory.aspx"><i class="fa fa-user"></i>销售历史</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <h3 class="card-title">本月销量排行</h3>
+              <div class="card-body">
+                这个表格用DataGridView
+              </div>
+              <div class="card-footer">
+                <a class="btn btn-primary" href="sellhistory.aspx"><i class="fa fa-user"></i>查看库存</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
   <!-- Javascripts-->

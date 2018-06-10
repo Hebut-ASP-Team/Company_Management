@@ -8,7 +8,8 @@ using System.Web.UI.WebControls;
 namespace 企业信息管理 {
     public partial class index : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-
+            lbCount.Text = "1";
+            lbMoney.Text = "100";
         }
     }
 }
