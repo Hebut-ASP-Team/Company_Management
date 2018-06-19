@@ -223,7 +223,7 @@
                   <asp:BoundField DataField="saledet_id" HeaderText="明细ID" />
                   <asp:BoundField DataField="goods_id" HeaderText="商品ID" />
                   <asp:BoundField DataField="goods_name" HeaderText="商品名称" />
-                  <asp:BoundField DataField="saledet_money" HeaderText="数量" />
+                  <asp:BoundField DataField="saledet_amount" HeaderText="数量" />
                   <asp:BoundField DataField="saledet_money" HeaderText="单价" />
                   <asp:BoundField DataField="saledet_purchaser" HeaderText="供应商" />
                 </Columns>
